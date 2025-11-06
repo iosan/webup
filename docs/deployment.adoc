@@ -629,34 +629,38 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './html'
-      
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html
+          force_orphan: true
 ----
 
-NOTE: Requires GitHub Pages to be enabled in repository settings with "GitHub Actions" as the source.
+**Setup Instructions:**
+
+1. Go to repository Settings → Pages
+2. Set Source to "Deploy from a branch"
+3. Select branch: `gh-pages` and folder: `/ (root)`
+4. Save changes
+5. Push to master/main to trigger deployment
+
+The workflow automatically creates and updates the `gh-pages` branch with the contents of the `html/` directory.
+
+**Troubleshooting:**
+
+* If deployment fails, ensure Actions have write permissions (Settings → Actions → General → Workflow permissions → "Read and write permissions")
+* The first deployment creates the `gh-pages` branch automatically
+* Site will be available at: `https://<username>.github.io/<repository>/`
 
 === Netlify/Vercel
 
