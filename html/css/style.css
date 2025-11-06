@@ -1,0 +1,211 @@
+/* ================================
+   Global Styles
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ================================
+   Header Styles
+   ================================ */
+
+header {
+    background-color: #3d2f21;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
+}
+
+header h1 {
+    margin-bottom: 0;
+    margin-left: 100px;
+}
+
+
+/* ================================
+   Logo Styles
+   ================================ */
+
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo a {
+    display: block;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+
+/* ================================
+   Navigation Styles
+   ================================ */
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin-left: 100px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ddd;
+}
+
+
+/* ================================
+   Content Area Styles
+   ================================ */
+
+.content {
+    flex: 1;
+    padding: 40px 20px 100px 20px;
+    background-color: #f4f4f4;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #666;
+}
+
+
+/* ================================
+   Watermark Background Styles
+   ================================ */
+
+.content-with-watermark {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.content-with-watermark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(244, 244, 244, 0.85);
+    z-index: 0;
+}
+
+.content-with-watermark > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ================================
+   Image Gallery Styles
+   ================================ */
+
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.image-container {
+    background: white;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                0 1px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container img {
+    display: block;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.image-container a {
+    display: block;
+    text-decoration: none;
+}
+
+/* Image Rotation Effects */
+.rotate-left {
+    transform: rotate(-6deg);
+}
+
+.rotate-left-center {
+    transform: rotate(-3deg);
+}
+
+.rotate-center {
+    transform: rotate(0deg);
+}
+
+.rotate-right-center {
+    transform: rotate(3deg);
+}
+
+.rotate-right {
+    transform: rotate(6deg);
+}
+
+/* Image Hover Effect */
+.image-container:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+
+/* ================================
+   Footer Styles
+   ================================ */
+
+footer {
+    background-color: #3d2f21;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

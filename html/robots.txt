@@ -1,0 +1,24 @@
+# robots.txt for WebUp Industrial Engineering
+# This file controls web crawler access
+
+User-agent: *
+Allow: /
+Disallow: /impressum.html
+Disallow: /about.html
+Disallow: /contact.html
+
+# Specific crawlers
+User-agent: Googlebot
+Allow: /
+Disallow: /impressum.html
+Disallow: /about.html
+Disallow: /contact.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /impressum.html
+Disallow: /about.html
+Disallow: /contact.html
+
+# Sitemap (optional - add when you create one)
+# Sitemap: https://yourdomain.com/sitemap.xml
