@@ -1,4 +1,48 @@
 /* ================================
+   CSS Variables (Theme Configuration)
+   ================================ */
+
+:root {
+    /* Color Palette */
+    --color-primary: #3d2f21;           /* Dark sepia for header/footer */
+    --color-primary-light: #ddd;        /* Light color for hover states */
+    --color-background: #f4f4f4;        /* Light gray background */
+    --color-background-overlay: rgba(244, 244, 244, 0.85); /* Watermark overlay */
+    --color-text-dark: #333;            /* Dark text color */
+    --color-text-medium: #666;          /* Medium text color */
+    --color-white: white;               /* Pure white */
+    
+    /* Spacing */
+    --spacing-xs: 15px;
+    --spacing-sm: 20px;
+    --spacing-md: 40px;
+    --spacing-lg: 100px;
+    
+    /* Logo */
+    --logo-size: 80px;
+    --logo-position-left: 20px;
+    
+    /* Gallery */
+    --gallery-gap: 40px;
+    --image-size: 250px;
+    --image-padding: 15px;
+    --image-rotation-small: 3deg;
+    --image-rotation-large: 6deg;
+    
+    /* Shadows */
+    --shadow-paper: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2);
+    --shadow-paper-hover: 0 15px 40px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
+    
+    /* Transitions */
+    --transition-fast: 0.3s ease;
+    
+    /* Typography */
+    --font-family: Arial, sans-serif;
+    --line-height-text: 1.6;
+}
+
+
+/* ================================
    Global Styles
    ================================ */
 
@@ -9,7 +53,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -21,19 +65,19 @@ body {
    ================================ */
 
 header {
-    background-color: #3d2f21;
-    color: white;
-    padding: 20px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-sm);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: var(--spacing-xs);
     position: relative;
 }
 
 header h1 {
     margin-bottom: 0;
-    margin-left: 100px;
+    margin-left: var(--spacing-lg);
 }
 
 
@@ -43,7 +87,7 @@ header h1 {
 
 .logo {
     position: absolute;
-    left: 20px;
+    left: var(--logo-position-left);
     top: 50%;
     transform: translateY(-50%);
 }
@@ -54,8 +98,8 @@ header h1 {
 }
 
 .logo img {
-    width: 80px;
-    height: 80px;
+    width: var(--logo-size);
+    height: var(--logo-size);
     display: block;
 }
 
@@ -67,18 +111,18 @@ header h1 {
 header nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
-    margin-left: 100px;
+    gap: var(--spacing-sm);
+    margin-left: var(--spacing-lg);
 }
 
 header nav ul li a {
-    color: white;
+    color: var(--color-white);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color var(--transition-fast);
 }
 
 header nav ul li a:hover {
-    color: #ddd;
+    color: var(--color-primary-light);
 }
 
 
@@ -88,19 +132,19 @@ header nav ul li a:hover {
 
 .content {
     flex: 1;
-    padding: 40px 20px 100px 20px;
-    background-color: #f4f4f4;
+    padding: var(--spacing-md) var(--spacing-sm) var(--spacing-lg) var(--spacing-sm);
+    background-color: var(--color-background);
 }
 
 .content h2 {
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-dark);
 }
 
 .content p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-    color: #666;
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-text);
+    color: var(--color-text-medium);
 }
 
 
@@ -123,7 +167,7 @@ header nav ul li a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(244, 244, 244, 0.85);
+    background-color: var(--color-background-overlay);
     z-index: 0;
 }
 
@@ -141,23 +185,22 @@ header nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
-    margin-top: 40px;
+    gap: var(--gallery-gap);
+    margin-top: var(--spacing-md);
     flex-wrap: wrap;
 }
 
 .image-container {
-    background: white;
-    padding: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
-                0 1px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--color-white);
+    padding: var(--image-padding);
+    box-shadow: var(--shadow-paper);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .image-container img {
     display: block;
-    width: 250px;
-    height: 250px;
+    width: var(--image-size);
+    height: var(--image-size);
     object-fit: cover;
 }
 
@@ -168,11 +211,11 @@ header nav ul li a:hover {
 
 /* Image Rotation Effects */
 .rotate-left {
-    transform: rotate(-6deg);
+    transform: rotate(calc(-1 * var(--image-rotation-large)));
 }
 
 .rotate-left-center {
-    transform: rotate(-3deg);
+    transform: rotate(calc(-1 * var(--image-rotation-small)));
 }
 
 .rotate-center {
@@ -180,18 +223,17 @@ header nav ul li a:hover {
 }
 
 .rotate-right-center {
-    transform: rotate(3deg);
+    transform: rotate(var(--image-rotation-small));
 }
 
 .rotate-right {
-    transform: rotate(6deg);
+    transform: rotate(var(--image-rotation-large));
 }
 
 /* Image Hover Effect */
 .image-container:hover {
     transform: rotate(0deg) scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
-                0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-paper-hover);
     z-index: 10;
 }
 
@@ -201,9 +243,9 @@ header nav ul li a:hover {
    ================================ */
 
 footer {
-    background-color: #3d2f21;
-    color: white;
-    padding: 20px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-sm);
     text-align: center;
     position: fixed;
     bottom: 0;
