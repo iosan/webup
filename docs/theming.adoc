@@ -1,0 +1,420 @@
+= CSS Theming Guide
+iosan
+v0.1.0, 2025-11-06
+:toc: left
+:toclevels: 2
+:sectnums:
+:icons: font
+:source-highlighter: highlightjs
+
+== Introduction
+
+This guide explains how to use CSS variables for theming in the WebUp Industrial Engineering website. The website uses a modern CSS variable system that allows you to change colors, spacing, and other design elements from a central location.
+
+== CSS Variables Overview
+
+All theme variables are defined in the `:root` selector at the top of `css/style.css`. This makes it easy to customize the entire website by changing just a few values.
+
+== Variable Categories
+
+=== Color Palette
+
+[source,css]
+----
+:root {
+    /* Color Palette */
+    --color-primary: #3d2f21;           /* Dark sepia for header/footer */
+    --color-primary-light: #ddd;        /* Light color for hover states */
+    --color-background: #f4f4f4;        /* Light gray background */
+    --color-background-overlay: rgba(244, 244, 244, 0.85); /* Watermark overlay */
+    --color-text-dark: #333;            /* Dark text color */
+    --color-text-medium: #666;          /* Medium text color */
+    --color-white: white;               /* Pure white */
+}
+----
+
+=== Spacing
+
+[source,css]
+----
+:root {
+    /* Spacing */
+    --spacing-xs: 15px;
+    --spacing-sm: 20px;
+    --spacing-md: 40px;
+    --spacing-lg: 100px;
+}
+----
+
+=== Logo Settings
+
+[source,css]
+----
+:root {
+    /* Logo */
+    --logo-size: 80px;
+    --logo-position-left: 20px;
+}
+----
+
+=== Gallery Settings
+
+[source,css]
+----
+:root {
+    /* Gallery */
+    --gallery-gap: 40px;
+    --image-size: 250px;
+    --image-padding: 15px;
+    --image-rotation-small: 3deg;
+    --image-rotation-large: 6deg;
+}
+----
+
+=== Shadow Effects
+
+[source,css]
+----
+:root {
+    /* Shadows */
+    --shadow-paper: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2);
+    --shadow-paper-hover: 0 15px 40px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+----
+
+=== Transitions and Typography
+
+[source,css]
+----
+:root {
+    /* Transitions */
+    --transition-fast: 0.3s ease;
+    
+    /* Typography */
+    --font-family: Arial, sans-serif;
+    --line-height-text: 1.6;
+}
+----
+
+== Pre-Made Themes
+
+=== Theme 1: Blue Industrial
+
+Professional blue theme for tech-oriented companies.
+
+[source,css]
+----
+:root {
+    --color-primary: #1a3a52;           /* Dark blue */
+    --color-primary-light: #85b3d1;     /* Light blue */
+    --color-background: #f0f4f8;        /* Light blue-gray */
+    --color-background-overlay: rgba(240, 244, 248, 0.85);
+    --color-text-dark: #1a2b3c;
+}
+----
+
+=== Theme 2: Modern Gray
+
+Clean, neutral gray theme for versatile use.
+
+[source,css]
+----
+:root {
+    --color-primary: #2c3e50;           /* Dark gray-blue */
+    --color-primary-light: #bdc3c7;     /* Light gray */
+    --color-background: #ecf0f1;        /* Very light gray */
+    --color-background-overlay: rgba(236, 240, 241, 0.85);
+    --color-text-dark: #2c3e50;
+}
+----
+
+=== Theme 3: Deep Green
+
+Natural green theme for sustainable/eco companies.
+
+[source,css]
+----
+:root {
+    --color-primary: #1e3a1a;           /* Forest green */
+    --color-primary-light: #a8d5ba;     /* Mint green */
+    --color-background: #f1f8f4;        /* Very light green */
+    --color-background-overlay: rgba(241, 248, 244, 0.85);
+    --color-text-dark: #1e3a1a;
+}
+----
+
+=== Theme 4: Warm Orange
+
+Bold orange theme for energy and construction.
+
+[source,css]
+----
+:root {
+    --color-primary: #d35400;           /* Dark orange */
+    --color-primary-light: #f39c12;     /* Light orange */
+    --color-background: #fef5e7;        /* Cream */
+    --color-background-overlay: rgba(254, 245, 231, 0.85);
+    --color-text-dark: #7d3c00;
+}
+----
+
+=== Theme 5: Professional Navy
+
+Corporate navy blue for finance/consulting.
+
+[source,css]
+----
+:root {
+    --color-primary: #001f3f;           /* Navy blue */
+    --color-primary-light: #7fdbff;     /* Sky blue */
+    --color-background: #f4f7f9;        /* Light blue-white */
+    --color-background-overlay: rgba(244, 247, 249, 0.85);
+    --color-text-dark: #001f3f;
+}
+----
+
+== Applying a Theme
+
+=== Method 1: Direct Replacement
+
+. Open `css/style.css`
+. Find the `:root` section at the top of the file
+. Replace the color variables with your chosen theme values
+. Save and refresh your browser
+
+=== Method 2: Separate Theme File
+
+Create a separate CSS file for easy theme switching:
+
+. Create `css/theme-blue.css`:
++
+[source,css]
+----
+/* Blue Industrial Theme Override */
+:root {
+    --color-primary: #1a3a52;
+    --color-primary-light: #85b3d1;
+    --color-background: #f0f4f8;
+    --color-background-overlay: rgba(240, 244, 248, 0.85);
+}
+----
+
+. Link it in your HTML after the main stylesheet:
++
+[source,html]
+----
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+----
+
+=== Method 3: Dark Mode Support
+
+Add automatic dark mode detection:
+
+[source,css]
+----
+/* Light mode (default) */
+:root {
+    --color-primary: #3d2f21;
+    --color-background: #f4f4f4;
+    --color-text-dark: #333;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #1a1a1a;
+        --color-background: #2a2a2a;
+        --color-text-dark: #ffffff;
+        --color-text-medium: #cccccc;
+        --color-background-overlay: rgba(42, 42, 42, 0.85);
+    }
+}
+----
+
+== Customization Examples
+
+=== Adjusting Spacing
+
+Make the layout more compact:
+
+[source,css]
+----
+:root {
+    --spacing-xs: 10px;     /* Reduced from 15px */
+    --spacing-sm: 15px;     /* Reduced from 20px */
+    --spacing-md: 30px;     /* Reduced from 40px */
+    --spacing-lg: 80px;     /* Reduced from 100px */
+}
+----
+
+=== Changing Logo Size
+
+Increase logo prominence:
+
+[source,css]
+----
+:root {
+    --logo-size: 120px;             /* Increased from 80px */
+    --logo-position-left: 30px;     /* Adjust position if needed */
+}
+----
+
+=== Modifying Gallery Layout
+
+Create a tighter gallery with larger images:
+
+[source,css]
+----
+:root {
+    --gallery-gap: 30px;            /* Reduced from 40px */
+    --image-size: 300px;            /* Increased from 250px */
+    --image-padding: 20px;          /* Increased from 15px */
+}
+----
+
+=== Adjusting Image Rotation
+
+More dramatic paper effect:
+
+[source,css]
+----
+:root {
+    --image-rotation-small: 5deg;   /* Increased from 3deg */
+    --image-rotation-large: 10deg;  /* Increased from 6deg */
+}
+----
+
+=== Changing Typography
+
+Use a different font and spacing:
+
+[source,css]
+----
+:root {
+    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --line-height-text: 1.8;        /* Increased from 1.6 */
+}
+----
+
+== Accessibility Considerations
+
+When creating custom themes, ensure:
+
+. *Color Contrast:* Maintain WCAG AA minimum contrast ratio of 4.5:1
+. *Test Tools:* Use https://webaim.org/resources/contrastchecker/
+. *Text Readability:* Ensure text is readable on all backgrounds
+. *Focus States:* Verify link hover colors are visible
+
+=== Checking Contrast
+
+Use this formula for your colors:
+
+[source,text]
+----
+Text on Background:
+- Normal text: 4.5:1 minimum
+- Large text (18pt+): 3:1 minimum
+----
+
+Example contrast check:
+
+[source,css]
+----
+/* Good contrast */
+--color-text-dark: #333;        /* On #f4f4f4 background = 9.7:1 ✓ */
+--color-text-medium: #666;      /* On #f4f4f4 background = 5.7:1 ✓ */
+
+/* Poor contrast - avoid */
+--color-text-light: #ddd;       /* On #f4f4f4 background = 1.2:1 ✗ */
+----
+
+== Tips and Best Practices
+
+. *Document Changes:* Keep notes of custom theme values
+. *Test Across Browsers:* Verify appearance in Chrome, Firefox, Safari, Edge
+. *Use Hex Colors:* More precise than named colors
+. *Group Related Variables:* Keep color variables together
+. *Maintain Consistency:* Use variables instead of hardcoded values
+. *Version Control:* Commit theme changes to Git
+. *Create Theme Library:* Save successful themes for reuse
+
+== Responsive Theme Adjustments
+
+Adjust variables for different screen sizes:
+
+[source,css]
+----
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 60px;         /* Reduce left margin */
+        --logo-size: 60px;          /* Smaller logo */
+        --image-size: 200px;        /* Smaller gallery images */
+        --gallery-gap: 20px;        /* Tighter spacing */
+    }
+}
+
+/* Large screens */
+@media (min-width: 1920px) {
+    :root {
+        --spacing-lg: 150px;        /* More breathing room */
+        --image-size: 300px;        /* Larger gallery images */
+        --gallery-gap: 60px;        /* More space */
+    }
+}
+----
+
+== Troubleshooting
+
+=== Theme Not Applying
+
+*Problem:* Changes to variables don't appear
+
+*Solutions:*
+
+. Clear browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+. Check CSS file is linked correctly in HTML
+. Verify no syntax errors in CSS (missing semicolons, etc.)
+. Ensure `:root` selector is at the top of the file
+
+=== Colors Look Wrong
+
+*Problem:* Colors appear different than expected
+
+*Solutions:*
+
+. Check monitor color calibration
+. Test in multiple browsers
+. Verify rgba alpha values (0.85 = 85% opacity)
+. Check for CSS specificity issues
+
+=== Variables Not Supported
+
+*Problem:* Old browser doesn't support CSS variables
+
+*Solutions:*
+
+. Add fallback values:
++
+[source,css]
+----
+.content {
+    background-color: #f4f4f4;                  /* Fallback */
+    background-color: var(--color-background);  /* Modern browsers */
+}
+----
+
+. Target browsers: Chrome 49+, Firefox 31+, Safari 9.1+, Edge 15+
+
+== Additional Resources
+
+* MDN CSS Variables: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+* Color Contrast Checker: https://webaim.org/resources/contrastchecker/
+* Color Palette Generator: https://coolors.co/
+* WCAG Guidelines: https://www.w3.org/WAI/WCAG21/quickref/
+
+---
+
+*Last Updated:* November 6, 2025 +
+*Version:* 0.1.0

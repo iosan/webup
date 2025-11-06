@@ -1,0 +1,601 @@
+= Deployment Guide
+iosan
+v0.1.0, 2025-11-06
+:toc: left
+:toclevels: 2
+:sectnums:
+:icons: font
+:source-highlighter: highlightjs
+
+== Introduction
+
+This guide covers deploying the WebUp Industrial Engineering website to various hosting platforms. Since this is a static HTML/CSS website, deployment is straightforward and works with any static hosting service.
+
+== Pre-Deployment Checklist
+
+[WARNING]
+====
+Complete these tasks BEFORE deploying to production:
+====
+
+=== Critical Items
+
+- [ ] Replace all placeholder images with licensed images
+- [ ] Update `impressum.html` with actual company information
+- [ ] Change domain in `sitemap.xml` from `yourdomain.com`
+- [ ] Update contact information in `contact.html`
+- [ ] Test all internal links
+- [ ] Verify all images load correctly
+
+=== Quality Assurance
+
+- [ ] Validate HTML at https://validator.w3.org/
+- [ ] Validate CSS at https://jigsaw.w3.org/css-validator/
+- [ ] Check accessibility at https://wave.webaim.org/
+- [ ] Test responsive design on mobile devices
+- [ ] Test in multiple browsers (Chrome, Firefox, Safari, Edge)
+- [ ] Check page load speed
+- [ ] Verify SEO meta tags
+
+=== Legal Compliance
+
+- [ ] Confirm image licenses and attributions
+- [ ] Review privacy policy (if collecting data)
+- [ ] Update copyright year in footer
+- [ ] Complete impressum (for German/EU sites)
+
+== Deployment Options
+
+=== GitHub Pages
+
+Free static hosting directly from your GitHub repository.
+
+==== Prerequisites
+
+* GitHub account
+* Repository pushed to GitHub
+
+==== Deployment Steps
+
+. *Using gh-pages branch:*
++
+[source,bash]
+----
+# Push only the html folder to gh-pages branch
+git subtree push --prefix html origin gh-pages
+----
+
+. *Configure GitHub Pages:*
++
+- Go to repository Settings → Pages
+- Source: Deploy from branch
+- Branch: `gh-pages` / `root`
+- Click Save
+
+. *Access your site:*
++
+----
+https://yourusername.github.io/webup/
+----
+
+==== Custom Domain
+
+. Add a `CNAME` file to `html/` folder:
++
+[source,text]
+----
+www.yourdomain.com
+----
+
+. Configure DNS with your domain provider:
++
+----
+Type: CNAME
+Name: www
+Value: yourusername.github.io
+----
+
+. Add custom domain in GitHub Pages settings
+
+=== Netlify
+
+Modern hosting with continuous deployment.
+
+==== Deployment via Git
+
+. *Create Netlify account:* https://netlify.com
+
+. *Connect repository:*
++
+- Click "New site from Git"
+- Choose GitHub and authorize
+- Select your `webup` repository
+
+. *Configure build settings:*
++
+----
+Base directory: (leave empty)
+Build command: (leave empty - no build needed)
+Publish directory: html
+----
+
+. *Deploy:*
++
+- Click "Deploy site"
+- Netlify will assign a URL like `random-name.netlify.app`
+
+==== Drag and Drop Deploy
+
+Alternatively, deploy without Git:
+
+. Zip the `html/` folder contents
+. Go to https://app.netlify.com/drop
+. Drag and drop the zip file
+. Site deploys instantly
+
+==== Custom Domain
+
+. Go to Site settings → Domain management
+. Click "Add custom domain"
+. Follow DNS configuration instructions
+
+=== Vercel
+
+Fast, global deployment platform.
+
+==== Deployment Steps
+
+. *Create Vercel account:* https://vercel.com
+
+. *Import project:*
++
+- Click "New Project"
+- Import from GitHub
+- Select `webup` repository
+
+. *Configure settings:*
++
+----
+Framework Preset: Other
+Root Directory: html
+Output Directory: (leave empty)
+Build Command: (leave empty)
+----
+
+. *Deploy:*
++
+- Click "Deploy"
+- Vercel assigns URL like `webup.vercel.app`
+
+==== Custom Domain
+
+. Go to Project Settings → Domains
+. Add your domain
+. Configure DNS records as instructed
+
+=== Traditional Web Hosting
+
+Deploy to shared hosting, VPS, or dedicated server.
+
+==== FTP Upload
+
+. *Connect via FTP client (FileZilla, Cyberduck):*
++
+----
+Host: ftp.yourdomain.com
+Username: your_username
+Password: your_password
+Port: 21 (or 22 for SFTP)
+----
+
+. *Upload files:*
++
+- Navigate to `public_html` or `www` directory
+- Upload all files from `html/` folder
+- Maintain directory structure
+
+. *Set permissions (if needed):*
++
+----
+Directories: 755
+Files: 644
+----
+
+==== SSH/Command Line
+
+[source,bash]
+----
+# Connect to server
+ssh user@yourserver.com
+
+# Create directory
+mkdir -p /var/www/yourdomain.com
+
+# Upload files (from local machine)
+scp -r html/* user@yourserver.com:/var/www/yourdomain.com/
+
+# Set ownership
+sudo chown -R www-data:www-data /var/www/yourdomain.com
+----
+
+=== Cloud Storage (AWS S3, Google Cloud)
+
+Host as static website on cloud platforms.
+
+==== AWS S3 Static Website
+
+. *Create S3 bucket:*
++
+[source,bash]
+----
+aws s3 mb s3://yourdomain.com
+----
+
+. *Upload files:*
++
+[source,bash]
+----
+aws s3 sync html/ s3://yourdomain.com/
+----
+
+. *Enable static website hosting:*
++
+- Bucket Properties → Static website hosting
+- Index document: `index.html`
+- Error document: `index.html`
+
+. *Set bucket policy for public access:*
++
+[source,json]
+----
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Sid": "PublicReadGetObject",
+    "Effect": "Allow",
+    "Principal": "*",
+    "Action": "s3:GetObject",
+    "Resource": "arn:aws:s3:::yourdomain.com/*"
+  }]
+}
+----
+
+. *Access website:*
++
+----
+http://yourdomain.com.s3-website-region.amazonaws.com
+----
+
+==== CloudFront CDN (Optional)
+
+Add CloudFront for HTTPS and better performance:
+
+. Create CloudFront distribution
+. Origin: S3 bucket
+. Enable SSL certificate
+. Update DNS to CloudFront URL
+
+== Server Configuration
+
+=== Apache (.htaccess)
+
+Create `.htaccess` file in `html/` directory:
+
+[source,apache]
+----
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript
+    AddOutputFilterByType DEFLATE application/json application/xml
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # HTML
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Force HTTPS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Custom error pages
+ErrorDocument 404 /index.html
+----
+
+=== Nginx Configuration
+
+Add to server block in `/etc/nginx/sites-available/yourdomain`:
+
+[source,nginx]
+----
+server {
+    listen 80;
+    listen [::]:80;
+    server_name yourdomain.com www.yourdomain.com;
+    
+    # Redirect to HTTPS
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name yourdomain.com www.yourdomain.com;
+    
+    # SSL configuration
+    ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+    
+    root /var/www/yourdomain.com;
+    index index.html;
+    
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    
+    # Compression
+    gzip on;
+    gzip_types text/css application/javascript image/svg+xml;
+    gzip_min_length 256;
+    
+    # Cache control
+    location ~* \.(jpg|jpeg|png|gif|ico)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    
+    location ~* \.(css|js)$ {
+        expires 1M;
+        add_header Cache-Control "public";
+    }
+    
+    # Main location
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+----
+
+== SSL/HTTPS Setup
+
+=== Let's Encrypt (Free SSL)
+
+For traditional hosting:
+
+[source,bash]
+----
+# Install Certbot
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+
+# Get certificate
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+
+# Auto-renewal (already set up by Certbot)
+sudo certbot renew --dry-run
+----
+
+=== Cloudflare (Free SSL + CDN)
+
+. Create Cloudflare account
+. Add your domain
+. Update nameservers at domain registrar
+. Enable SSL in Cloudflare dashboard (Full mode)
+. Configure Page Rules for additional optimization
+
+== Performance Optimization
+
+=== Image Optimization
+
+Before deploying, optimize images:
+
+[source,bash]
+----
+# Install ImageMagick
+sudo apt install imagemagick
+
+# Optimize JPEG images
+for img in html/images/*.jpg; do
+    convert "$img" -quality 85 -strip "$img"
+done
+
+# Optimize PNG images (requires optipng)
+sudo apt install optipng
+for img in html/images/*.png; do
+    optipng -o7 "$img"
+done
+----
+
+=== CSS Minification
+
+Create minified version for production:
+
+[source,bash]
+----
+# Install clean-css-cli
+npm install -g clean-css-cli
+
+# Minify CSS
+cleancss -o html/css/style.min.css html/css/style.css
+
+# Update HTML to use minified version
+----
+
+=== Enable Compression
+
+Ensure your server compresses files:
+
+* Apache: Enable `mod_deflate`
+* Nginx: Enable `gzip`
+* Netlify/Vercel: Automatic
+
+== Monitoring and Analytics
+
+=== Google Analytics
+
+Add before closing `</head>` tag in all HTML files:
+
+[source,html]
+----
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+----
+
+=== Search Console
+
+. Go to https://search.google.com/search-console
+. Add property for your domain
+. Verify ownership (HTML file upload or meta tag)
+. Submit `sitemap.xml`
+
+== Troubleshooting
+
+=== Common Issues
+
+==== 404 Errors
+
+*Problem:* Pages not found after deployment
+
+*Solutions:*
+
+* Check file paths are relative, not absolute
+* Verify all files uploaded correctly
+* Check case sensitivity (Linux servers are case-sensitive)
+* Ensure `index.html` exists in root
+
+==== Images Not Loading
+
+*Problem:* Images don't display on live site
+
+*Solutions:*
+
+* Verify image files uploaded to `images/` folder
+* Check image paths in HTML are correct
+* Ensure proper file permissions (644 for files)
+* Check browser console for 404 errors
+
+==== CSS Not Applying
+
+*Problem:* Styles don't appear on live site
+
+*Solutions:*
+
+* Clear browser cache
+* Check CSS file path in HTML `<link>` tag
+* Verify CSS file uploaded correctly
+* Check browser console for CSS errors
+
+==== HTTPS Not Working
+
+*Problem:* SSL certificate issues
+
+*Solutions:*
+
+* Verify SSL certificate installed correctly
+* Check certificate hasn't expired
+* Ensure HTTPS redirect configured
+* Test with https://www.ssllabs.com/ssltest/
+
+== Post-Deployment Tasks
+
+. *Test live site thoroughly*
+. *Submit sitemap to Google Search Console*
+. *Monitor for 404 errors in analytics*
+. *Set up uptime monitoring (e.g., UptimeRobot)*
+. *Configure backups*
+. *Document deployment process*
+. *Update README with live URL*
+
+== Continuous Deployment
+
+Set up automatic deployments:
+
+=== GitHub Actions
+
+Create `.github/workflows/deploy.yml`:
+
+[source,yaml]
+----
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ v0.1.0 ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html
+----
+
+=== Netlify/Vercel
+
+Automatic deployment on Git push (already configured when connecting repository).
+
+== Rollback Procedures
+
+If deployment fails:
+
+=== GitHub Pages
+
+[source,bash]
+----
+# Revert to previous version
+git revert HEAD
+git push origin gh-pages
+----
+
+=== Netlify/Vercel
+
+* Use dashboard to rollback to previous deployment
+* Select deployment from history
+* Click "Publish deploy"
+
+=== Traditional Hosting
+
+* Keep backup of previous version
+* FTP upload backup files to restore
+
+---
+
+*Last Updated:* November 6, 2025 +
+*Version:* 0.1.0

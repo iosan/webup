@@ -1,0 +1,544 @@
+= WebUp Industrial Engineering - Documentation
+iosan <https://github.com/iosan/webup>
+v0.1.0, 2025-11-06
+:toc: left
+:toclevels: 3
+:sectnums:
+:icons: font
+:source-highlighter: highlightjs
+:imagesdir: images
+
+== Introduction
+
+Welcome to the WebUp Industrial Engineering documentation. This project is a modern, accessible, and SEO-optimized static website showcasing metal fabrication and industrial engineering projects.
+
+=== Project Overview
+
+WebUp is a professional HTML5/CSS3 website designed for industrial engineering companies specializing in metal fabrication, CNC machining, and manufacturing services.
+
+.Key Features
+* Responsive design for all devices
+* Accessibility compliant (WCAG standards)
+* SEO optimized with meta tags and sitemap
+* Privacy compliant (robots.txt, noindex tags)
+* Modern CSS with variable-based theming
+* Interactive image gallery with paper shadow effects
+* Fixed footer with clean navigation
+
+=== Technology Stack
+
+[cols="1,3"]
+|===
+|Technology |Description
+
+|HTML5
+|Semantic markup with ARIA labels
+
+|CSS3
+|Modern styling with CSS variables
+
+|Git
+|Version control on branch v0.1.0
+
+|AsciiDoc
+|Documentation format
+|===
+
+== Getting Started
+
+=== Prerequisites
+
+* Web browser (Chrome, Firefox, Safari, Edge)
+* Text editor (VS Code recommended)
+* Basic knowledge of HTML/CSS
+* Optional: Local web server for testing
+
+=== Installation
+
+. Clone the repository:
++
+[source,bash]
+----
+git clone https://github.com/iosan/webup.git
+cd webup
+----
+
+. Switch to the v0.1.0 branch:
++
+[source,bash]
+----
+git checkout v0.1.0
+----
+
+. Open `html/index.html` in your browser or start a local server:
++
+[source,bash]
+----
+cd html
+python -m http.server 8000
+----
+
+. Navigate to http://localhost:8000
+
+=== Quick Start
+
+Open any HTML file in the `html/` directory directly in your browser. No build process required!
+
+== Project Structure
+
+[source,text]
+----
+webup/
+├── .git/                      # Git repository
+├── .gitignore                 # Git ignore patterns
+├── .venv/                     # Python virtual environment
+├── LICENSE                    # MIT License
+├── README.md                  # Project readme
+├── CHANGELOG.md               # Version history
+├── CONTRIBUTING.md            # Contribution guidelines
+├── docs/                      # Documentation folder
+│   └── index.adoc            # This documentation
+└── html/                      # Website root
+    ├── index.html            # Homepage
+    ├── about.html            # About page (noindex)
+    ├── contact.html          # Contact page (noindex)
+    ├── impressum.html        # Legal notice (noindex)
+    ├── image1.html           # Project detail page 1
+    ├── image2.html           # Project detail page 2
+    ├── image3.html           # Project detail page 3
+    ├── image4.html           # Project detail page 4
+    ├── image5.html           # Project detail page 5
+    ├── robots.txt            # Search engine directives
+    ├── sitemap.xml           # SEO sitemap
+    ├── humans.txt            # Credits and info
+    ├── css/
+    │   ├── style.css         # Main stylesheet
+    │   └── themes.md         # Theme variations guide
+    └── images/
+        ├── metal1.jpg        # Project image 1 (placeholder)
+        ├── metal2.jpg        # Project image 2 (placeholder)
+        ├── metal3.jpg        # Project image 3 (placeholder)
+        ├── metal4.jpg        # Project image 4 (placeholder)
+        ├── metal5.jpg        # Project image 5 (placeholder)
+        ├── gear.png          # Logo image (80x80px)
+        └── gear.ico          # Favicon
+----
+
+== Architecture
+
+=== HTML Structure
+
+All HTML files follow a consistent structure:
+
+[source,html]
+----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="iosan">
+    <meta name="description" content="...">
+    <meta name="keywords" content="metal, steel, industrial, machinery, engineering, fabrication, cnc">
+    <link rel="icon" type="image/x-icon" href="images/gear.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Page Title</title>
+</head>
+<body>
+    <header>...</header>
+    <main class="content">...</main>
+    <footer>...</footer>
+</body>
+</html>
+----
+
+=== CSS Architecture
+
+The stylesheet is organized into logical sections with CSS variables for easy theming:
+
+. *CSS Variables* - Theme configuration
+. *Global Styles* - Reset and body styles
+. *Header Styles* - Top navigation area
+. *Logo Styles* - Brand logo positioning
+. *Navigation Styles* - Menu links
+. *Content Area Styles* - Main content styling
+. *Watermark Background Styles* - Background overlays
+. *Image Gallery Styles* - Gallery layout and effects
+. *Footer Styles* - Bottom section
+
+== Features in Detail
+
+=== Responsive Design
+
+The website adapts to different screen sizes using:
+
+* Flexbox layouts
+* Flexible images (`max-width: 100%`)
+* Viewport meta tag
+* Wrapped gallery for mobile devices
+
+=== Accessibility
+
+WCAG compliance features:
+
+* Semantic HTML5 elements (`<header>`, `<nav>`, `<main>`, `<footer>`, `<article>`)
+* ARIA labels for navigation and content sections
+* Proper heading hierarchy (h1 → h2)
+* Descriptive alt text for images
+* Keyboard navigation support
+* Sufficient color contrast ratios
+
+=== SEO Optimization
+
+Search engine optimization includes:
+
+* Meta descriptions on all pages
+* Keyword targeting: metal, steel, industrial, machinery, engineering, fabrication, cnc
+* Semantic HTML structure
+* `robots.txt` for crawler control
+* `sitemap.xml` for search engines
+* Proper page titles
+* Author attribution
+
+=== Privacy Compliance
+
+Privacy-focused features:
+
+* Three pages excluded from search engines (about, contact, impressum)
+* `noindex, nofollow, noarchive, nosnippet` meta tags
+* robots.txt disallow directives
+* Legal notice page (impressum)
+
+=== CSS Variables Theming
+
+Easy theme customization through CSS variables:
+
+[source,css]
+----
+:root {
+    /* Colors */
+    --color-primary: #3d2f21;
+    --color-background: #f4f4f4;
+    
+    /* Spacing */
+    --spacing-sm: 20px;
+    --spacing-md: 40px;
+    
+    /* Logo */
+    --logo-size: 80px;
+    
+    /* Gallery */
+    --image-size: 250px;
+    --image-rotation-large: 6deg;
+}
+----
+
+See link:../html/css/themes.md[Theme Variations Guide] for alternative color schemes.
+
+== Customization Guide
+
+=== Changing Colors
+
+Edit the CSS variables in `css/style.css`:
+
+[source,css]
+----
+:root {
+    --color-primary: #1a3a52;        /* New header/footer color */
+    --color-background: #f0f4f8;     /* New background color */
+}
+----
+
+=== Changing Logo
+
+. Replace `images/gear.png` with your logo (recommended: 80x80px)
+. Replace `images/gear.ico` with your favicon
+. Update the CSS variable if using different size:
++
+[source,css]
+----
+:root {
+    --logo-size: 100px;  /* Adjust as needed */
+}
+----
+
+=== Adding New Pages
+
+. Create new HTML file in `html/` directory
+. Copy structure from existing page
+. Update navigation links in all files
+. Add to `sitemap.xml` if publicly accessible
+. Update `robots.txt` if page should be excluded
+
+=== Modifying Gallery
+
+Change image count or arrangement in `index.html`:
+
+[source,html]
+----
+<section class="image-gallery" aria-label="Project Gallery">
+    <article class="image-container rotate-left">
+        <a href="image1.html">
+            <img src="images/metal1.jpg" alt="Project 1">
+        </a>
+    </article>
+    <!-- Add more images -->
+</section>
+----
+
+Rotation classes available:
+
+* `rotate-left` (-6deg)
+* `rotate-left-center` (-3deg)
+* `rotate-center` (0deg)
+* `rotate-right-center` (+3deg)
+* `rotate-right` (+6deg)
+
+== Deployment
+
+=== Static Hosting
+
+Deploy to any static hosting service:
+
+==== GitHub Pages
+
+[source,bash]
+----
+# Push html/ folder to gh-pages branch
+git subtree push --prefix html origin gh-pages
+----
+
+==== Netlify
+
+. Connect your GitHub repository
+. Set build directory to `html`
+. Deploy
+
+==== Vercel
+
+. Import your GitHub repository
+. Set output directory to `html`
+. Deploy
+
+=== Apache Configuration
+
+If using Apache, add `.htaccess` for security headers:
+
+[source,apache]
+----
+# Security Headers
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-Content-Type-Options "nosniff"
+Header set X-XSS-Protection "1; mode=block"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+</IfModule>
+----
+
+=== Pre-Deployment Checklist
+
+[WARNING]
+====
+Before deploying to production:
+
+. ✓ Replace placeholder images with licensed images
+. ✓ Update impressum.html with actual company information
+. ✓ Change domain in sitemap.xml
+. ✓ Test all links and navigation
+. ✓ Validate HTML (https://validator.w3.org/)
+. ✓ Validate CSS (https://jigsaw.w3.org/css-validator/)
+. ✓ Test accessibility (https://wave.webaim.org/)
+. ✓ Test on multiple browsers and devices
+. ✓ Check mobile responsiveness
+. ✓ Verify robots.txt configuration
+====
+
+== Maintenance
+
+=== Regular Updates
+
+* Update project images and descriptions
+* Refresh meta descriptions for SEO
+* Check for broken links
+* Update copyright year in footer
+* Review and update CHANGELOG.md
+
+=== Browser Testing
+
+Test regularly in:
+
+* Google Chrome (latest)
+* Mozilla Firefox (latest)
+* Apple Safari (latest)
+* Microsoft Edge (latest)
+* Mobile browsers (iOS Safari, Chrome Mobile)
+
+=== Performance Optimization
+
+. Optimize images (compress, use WebP)
+. Minify CSS for production
+. Enable server compression (gzip)
+. Implement browser caching
+. Use a CDN for static assets
+
+== Troubleshooting
+
+=== Common Issues
+
+==== Images Not Loading
+
+*Problem:* Images don't display on live site
+
+*Solution:* Check file paths are relative and case-sensitive
+
+[source,html]
+----
+<!-- Correct -->
+<img src="images/metal1.jpg" alt="Project">
+
+<!-- Incorrect -->
+<img src="/images/metal1.jpg" alt="Project">
+<img src="Images/Metal1.jpg" alt="Project">
+----
+
+==== Fixed Footer Overlapping Content
+
+*Problem:* Footer covers bottom content
+
+*Solution:* Content has `padding-bottom: 100px` to prevent overlap
+
+==== Logo Position Wrong
+
+*Problem:* Logo doesn't align properly
+
+*Solution:* Adjust CSS variables:
+
+[source,css]
+----
+:root {
+    --logo-position-left: 20px;  /* Adjust horizontal position */
+    --logo-size: 80px;           /* Adjust size */
+}
+----
+
+==== Gallery Not Responsive
+
+*Problem:* Images overflow on mobile
+
+*Solution:* Gallery uses `flex-wrap: wrap` by default. Check CSS variables:
+
+[source,css]
+----
+:root {
+    --image-size: 250px;  /* Reduce for smaller screens */
+    --gallery-gap: 40px;  /* Reduce spacing */
+}
+----
+
+== Contributing
+
+See link:../CONTRIBUTING.md[CONTRIBUTING.md] for contribution guidelines.
+
+=== Code Style
+
+* Use 4 spaces for indentation
+* Add comments for complex sections
+* Follow semantic HTML conventions
+* Maintain accessibility features
+* Test across browsers
+
+== License
+
+This project is licensed under the MIT License. See link:../LICENSE[LICENSE] file for details.
+
+[IMPORTANT]
+====
+*Image Licensing Notice:*
+
+The placeholder images (metal1-5.jpg, gear.png, gear.ico) are NOT covered by the MIT License and must be replaced with properly licensed images before commercial use.
+====
+
+== Support
+
+* GitHub Issues: https://github.com/iosan/webup/issues
+* Repository: https://github.com/iosan/webup
+* Branch: v0.1.0
+
+== Appendix
+
+=== File Reference
+
+==== index.html
+Homepage with 5-image project gallery
+
+==== about.html
+Company information page (excluded from search engines)
+
+==== contact.html
+Contact information page (excluded from search engines)
+
+==== impressum.html
+Legal notice required in Germany (excluded from search engines)
+
+==== image1-5.html
+Individual project detail pages with watermarked backgrounds
+
+==== robots.txt
+Directives for web crawlers
+
+==== sitemap.xml
+XML sitemap for search engines
+
+==== humans.txt
+Credits and technology information
+
+=== Keywords
+
+The website targets these SEO keywords:
+
+* metal
+* steel
+* industrial
+* machinery
+* engineering
+* fabrication
+* cnc
+
+=== Browser Support
+
+[cols="1,1"]
+|===
+|Browser |Minimum Version
+
+|Chrome
+|Latest
+
+|Firefox
+|Latest
+
+|Safari
+|Latest
+
+|Edge
+|Latest
+
+|Opera
+|Latest
+|===
+
+---
+
+*Last Updated:* November 6, 2025 +
+*Version:* 0.1.0 +
+*Author:* iosan

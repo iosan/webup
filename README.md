@@ -18,11 +18,16 @@
 - 🔗 **Multi-Page Navigation** - Home, About, Contact, Impressum, and individual project detail pages
 - ⚙️ **Custom Branding** - Gear logo with favicon support
 - 🎭 **Watermarked Backgrounds** - Beautiful project images as backgrounds on detail pages
-- 🎨 **Dark Sepia Theme** - Warm, earthy color scheme for professional industrial look
+- 🎨 **CSS Variable Theming** - Easy customization with centralized theme configuration
+- 🌈 **5 Ready-Made Themes** - Blue, Gray, Green, Orange, and Navy color schemes included
+- 🎨 **Dark Sepia Theme** - Warm, earthy color scheme for professional industrial look (default)
 - ♿ **Accessibility** - ARIA labels, semantic HTML, and keyboard navigation support
-- 🔍 **SEO Optimized** - Meta descriptions, keywords, and proper heading structure
+- 🔍 **SEO Optimized** - Meta descriptions, keywords, sitemap.xml, and proper heading structure
 - 🔒 **Privacy Compliant** - About, Contact, and Impressum pages excluded from search engines
 - 🤖 **Crawler Control** - robots.txt for search engine management
+- 📚 **Comprehensive Documentation** - AsciiDoc guides for setup, theming, and deployment
+- 👥 **humans.txt** - Credits and technology information
+- 📋 **Professional Setup** - .gitignore, LICENSE, CHANGELOG, CONTRIBUTING files included
 
 ---
 
@@ -30,28 +35,40 @@
 
 ```
 webup/
-├── 📄 README.md
-└── 📁 html/
-    ├── 🏠 index.html           # Homepage with project gallery
-    ├── 📖 about.html            # About page (excluded from search)
-    ├── 📧 contact.html          # Contact page (excluded from search)
-    ├── ⚖️ impressum.html        # Legal notice (excluded from search)
-    ├── 🖼️ image1.html           # Project detail page 1
-    ├── 🖼️ image2.html           # Project detail page 2
-    ├── 🖼️ image3.html           # Project detail page 3
-    ├── 🖼️ image4.html           # Project detail page 4
-    ├── 🖼️ image5.html           # Project detail page 5
-    ├── 🤖 robots.txt            # Web crawler control file
-    ├── 📁 css/
-    │   └── 🎨 style.css         # Main stylesheet (beautified & organized)
+├── 📄 .gitignore              # Git ignore patterns
+├── 📄 LICENSE                 # MIT License
+├── 📄 README.md               # This file
+├── 📄 CHANGELOG.md            # Version history
+├── 📄 CONTRIBUTING.md         # Contribution guidelines
+├── 📁 docs/                   # Documentation (AsciiDoc)
+│   ├── 📄 README.adoc         # Documentation index
+│   ├── 📄 index.adoc          # Main documentation
+│   ├── 📄 theming.adoc        # CSS theming guide
+│   └── � deployment.adoc     # Deployment instructions
+└── �📁 html/                   # Website root
+    ├── 🏠 index.html          # Homepage with project gallery
+    ├── 📖 about.html          # About page (excluded from search)
+    ├── 📧 contact.html        # Contact page (excluded from search)
+    ├── ⚖️ impressum.html      # Legal notice (excluded from search)
+    ├── 🖼️ image1.html         # Project detail page 1
+    ├── 🖼️ image2.html         # Project detail page 2
+    ├── 🖼️ image3.html         # Project detail page 3
+    ├── 🖼️ image4.html         # Project detail page 4
+    ├── 🖼️ image5.html         # Project detail page 5
+    ├── 🤖 robots.txt          # Web crawler control file
+    ├── 🗺️ sitemap.xml         # SEO sitemap
+    ├── � humans.txt          # Credits and info
+    ├── �📁 css/
+    │   ├── 🎨 style.css       # Main stylesheet with CSS variables
+    │   └── 📄 themes.md       # Theme variations guide
     └── 📁 images/
-        ├── ⚙️ gear.ico          # Browser favicon
-        ├── ⚙️ gear.png          # Site logo (80x80px)
-        ├── 🖼️ metal1.jpg        # Gallery image 1
-        ├── 🖼️ metal2.jpg        # Gallery image 2
-        ├── 🖼️ metal3.jpg        # Gallery image 3
-        ├── 🖼️ metal4.jpg        # Gallery image 4
-        └── 🖼️ metal5.jpg        # Gallery image 5
+        ├── ⚙️ gear.ico        # Browser favicon
+        ├── ⚙️ gear.png        # Site logo (80x80px)
+        ├── 🖼️ metal1.jpg      # Gallery image 1 (placeholder)
+        ├── 🖼️ metal2.jpg      # Gallery image 2 (placeholder)
+        ├── 🖼️ metal3.jpg      # Gallery image 3 (placeholder)
+        ├── 🖼️ metal4.jpg      # Gallery image 4 (placeholder)
+        └── 🖼️ metal5.jpg      # Gallery image 5 (placeholder)
 ```
 
 ---
@@ -116,9 +133,33 @@ Then open `http://localhost:8000` in your browser.
 
 ## 🎨 Customization
 
-### Change Colors
+### Change Colors with CSS Variables
 
-Edit `html/css/style.css` to modify the color scheme:
+The website now uses CSS variables for easy theming! Edit `html/css/style.css`:
+
+```css
+:root {
+    /* Change these variables to customize your theme */
+    --color-primary: #3d2f21;        /* Header/footer background */
+    --color-background: #f4f4f4;     /* Content background */
+    --color-text-dark: #333;         /* Main text color */
+    --spacing-md: 40px;              /* Adjust spacing */
+    --logo-size: 80px;               /* Logo dimensions */
+    --image-size: 250px;             /* Gallery image size */
+}
+```
+
+**5 Ready-Made Themes Available!**
+See `html/css/themes.md` or `docs/theming.adoc` for:
+- Blue Industrial Theme
+- Modern Gray Theme
+- Deep Green Theme
+- Warm Orange Theme
+- Professional Navy Theme
+
+### Legacy Color Customization
+
+You can also directly edit individual CSS rules:
 
 ```css
 /* Header and Footer - Dark Sepia Theme */
@@ -231,15 +272,18 @@ Home (index.html)
 ## 🛠️ Technical Details
 
 ### CSS Organization
-The stylesheet is organized into clear sections:
-- Global Styles
-- Header Styles
-- Logo Styles
-- Navigation Styles
-- Content Area Styles
-- Watermark Background Styles
-- Image Gallery Styles
-- Footer Styles
+The stylesheet is organized into clear sections with CSS variables:
+- **CSS Variables** - Centralized theme configuration
+- **Global Styles** - Base resets and typography
+- **Header Styles** - Navigation and branding area
+- **Logo Styles** - Brand logo positioning
+- **Navigation Styles** - Menu and links
+- **Content Area Styles** - Main content layout
+- **Watermark Background Styles** - Background overlays
+- **Image Gallery Styles** - Project gallery effects
+- **Footer Styles** - Bottom section
+
+All colors, spacing, and sizes use CSS variables for easy customization!
 
 ### HTML5 Best Practices
 - Valid DOCTYPE declaration
@@ -253,25 +297,45 @@ The stylesheet is organized into clear sections:
 
 ## 📝 Version History
 
-### v0.1.0 (Current - November 2025)
+### v0.1.0 (Current - November 6, 2025)
 - ✨ Initial release
 - 🎨 Dark sepia theme with warm industrial aesthetics
+- 🌈 CSS variables system with 5 ready-made alternative themes
 - 🖼️ 5-project gallery with paper shadows and rotation effects
 - 📱 Responsive design for all devices
 - ⚙️ Custom gear logo and favicon
 - ♿ Full accessibility features with ARIA labels
-- 🔍 SEO optimized with meta tags and keywords
+- 🔍 SEO optimized with meta tags, keywords, and sitemap.xml
 - 🔒 Privacy-compliant pages (About, Contact, Impressum excluded from search)
 - 🤖 robots.txt for crawler management
+- 👥 humans.txt for credits and technology info
 - 🎭 Watermarked backgrounds on project detail pages
-- 📚 Comprehensive documentation
+- 📚 Comprehensive AsciiDoc documentation (setup, theming, deployment)
+- 📋 Professional project setup (.gitignore, LICENSE, CHANGELOG, CONTRIBUTING)
 - ⚠️ **Note**: Placeholder images must be replaced with properly licensed images before commercial use
 
 ---
 
 ## 📄 License
 
-This project is open source and available for personal and commercial use.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+**⚠️ Image Licensing Notice:** The placeholder images (metal1-5.jpg, gear.png, gear.ico) are NOT covered by the MIT License and must be replaced with properly licensed images before commercial use.
+
+---
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` folder (AsciiDoc format):
+
+- **[Main Documentation](docs/index.adoc)** - Complete project guide
+- **[Theming Guide](docs/theming.adoc)** - CSS customization and themes
+- **[Deployment Guide](docs/deployment.adoc)** - Hosting and deployment instructions
+
+View AsciiDoc files using:
+- VS Code with AsciiDoc extension
+- Command line: `asciidoctor docs/index.adoc`
+- GitHub (automatically renders .adoc files)
 
 ---
 
