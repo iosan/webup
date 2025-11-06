@@ -21,21 +21,35 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header with navigation -->
-    <header>
+    <!-- Navigation bar (fixed at top) -->
+    <nav class="top-nav" aria-label="Main navigation">
         <div class="logo">
             <a href="index.html" aria-label="WebUp Home">
                 <img src="images/gear.png" alt="WebUp Logo">
             </a>
         </div>
+        <ul>
+            <li><a href="index.html" class="nav-button" aria-current="page">Home</a></li>
+            <li><a href="about.html" class="nav-button">About</a></li>
+            <li><a href="contact.html" class="nav-button">Contact</a></li>
+            <li class="dropdown">
+                <button class="nav-button dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    Projects ▾
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="image1.html">Project 1</a></li>
+                    <li><a href="image2.html">Project 2</a></li>
+                    <li><a href="image3.html">Project 3</a></li>
+                    <li><a href="image4.html">Project 4</a></li>
+                    <li><a href="image5.html">Project 5</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header with title -->
+    <header>
         <h1>WebUp Industrial Engineering</h1>
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html" aria-current="page">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
     <!-- Main content -->

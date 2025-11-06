@@ -1,6 +1,6 @@
 = Deployment Guide
 iosan
-v0.1.0, 2025-11-06
+v0.5.0, 2025-11-06
 :toc: left
 :toclevels: 2
 :sectnums:
@@ -625,7 +625,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ v0.1.0 ]
+    branches: [ v0.5.0 ]  # Adjust branch as needed
 
 jobs:
   deploy:
@@ -671,4 +671,4 @@ git push origin gh-pages
 ---
 
 *Last Updated:* November 6, 2025 +
-*Version:* 0.1.0
+*Version:* 0.5.0

@@ -1,0 +1,545 @@
+= Responsive Design Guide
+iosan <https://github.com/iosan/webup>
+v0.5.0, 2025-11-06
+:toc: left
+:toclevels: 3
+:sectnums:
+:icons: font
+:source-highlighter: highlightjs
+:imagesdir: screenshots
+
+== Overview
+
+WebUp Industrial Engineering features a fully responsive design that adapts seamlessly across desktop, tablet, and mobile devices. This guide documents the responsive breakpoints, optimizations, and visual examples of each layout mode.
+
+== Responsive Breakpoints
+
+The website uses two primary CSS media query breakpoints:
+
+[cols="1,1,2"]
+|===
+|Device |Breakpoint |Description
+
+|Desktop
+|> 768px
+|Full desktop layout with all features
+
+|Tablet
+|≤ 768px
+|Optimized for tablets and small laptops
+
+|Mobile
+|≤ 480px
+|Compact layout for smartphones
+|===
+
+== Desktop Layout
+
+=== Viewport: > 768px
+
+The desktop layout provides the full experience with maximum visual impact.
+
+image::desktop-layout.svg[Desktop Layout,align=center,width=100%]
+
+=== Desktop Features
+
+* **Navigation**: Full-size 32px logo, standard button spacing (8px/16px padding)
+* **Typography**: Default font sizes for optimal readability
+* **Gallery**: 5 images in flexible grid with paper shadow effects and rotation
+* **Layout**: Multi-column gallery (3-2 layout), generous spacing (40px gaps)
+* **Footer**: Full-width with horizontal validator badges
+* **Rotation Effects**: Active rotation transforms for visual interest
+
+=== Desktop Specifications
+
+[cols="1,1"]
+|===
+|Element |Size
+
+|Logo
+|32×32px
+
+|Nav Height
+|48px
+
+|Header Margin
+|48px
+
+|Gallery Images
+|250×250px
+
+|Image Padding
+|15px
+
+|Gallery Gap
+|40px
+
+|Button Padding
+|8px / 16px
+
+|H1 Font
+|Default (≈2rem)
+
+|Body Font
+|Default (≈1rem)
+|===
+
+== Tablet Layout
+
+=== Viewport: ≤ 768px
+
+The tablet layout optimizes space while maintaining visual hierarchy and usability.
+
+image::tablet-layout.svg[Tablet Layout,align=center,width=100%]
+
+=== Tablet Optimizations
+
+* **Navigation**: Reduced to 28px logo, smaller gaps (8px), compact buttons (6px/12px)
+* **Typography**: Scaled down 5-10% for better fit
+* **Gallery**: 2-column grid with auto-fit, centered images (180×180px)
+* **Layout**: Reduced spacing (30px gaps), wrapped footer badges
+* **Header**: Reduced margin (40px) to minimize gap
+* **Responsive Grid**: Uses CSS Grid `repeat(auto-fit, minmax(180px, 200px))`
+
+=== Tablet Specifications
+
+[cols="1,1,1"]
+|===
+|Element |Desktop |Tablet
+
+|Logo
+|32px
+|28px
+
+|Nav Height
+|48px
+|40px
+
+|Header Margin
+|48px
+|40px
+
+|Gallery Images
+|250px
+|180px
+
+|Image Padding
+|15px
+|10px
+
+|Gallery Gap
+|40px
+|30px
+
+|Button Padding
+|8/16px
+|6/12px
+
+|H1 Font
+|default
+|1.5rem
+
+|Body Font
+|default
+|0.95rem
+|===
+
+== Mobile Layout
+
+=== Viewport: ≤ 480px
+
+The mobile layout prioritizes content readability and touch-friendly interactions.
+
+image::mobile-layout.svg[Mobile Layout,align=center,width=100%]
+
+=== Mobile Optimizations
+
+* **Navigation**: Compact 24px logo, minimal gaps (4px), tiny buttons (5px/8px)
+* **Typography**: Reduced to 70-85% of desktop size for screen efficiency
+* **Gallery**: Single column layout, centered images (140×140px)
+* **Layout**: Minimal spacing (20px gaps), stacked footer badges
+* **Rotation**: Disabled for cleaner appearance (transform: rotate(0deg))
+* **Dropdown**: Right-aligned to prevent off-screen overflow
+* **Content**: Reduced padding (10px), tighter line-height (1.5)
+* **Lists**: Reduced padding-left (20px) for narrow screens
+
+=== Mobile Specifications
+
+[cols="1,1,1,1"]
+|===
+|Element |Desktop |Tablet |Mobile
+
+|Logo
+|32px
+|28px
+|24px
+
+|Nav Height
+|48px
+|40px
+|32px
+
+|Header Margin
+|48px
+|40px
+|32px
+
+|Gallery Images
+|250px
+|180px
+|140px
+
+|Image Padding
+|15px
+|10px
+|8px
+
+|Gallery Gap
+|40px
+|30px
+|20px
+
+|Button Padding
+|8/16px
+|6/12px
+|5/8px
+
+|H1 Font
+|default
+|1.5rem
+|1.1rem
+
+|Body Font
+|default
+|0.95rem
+|0.85rem
+
+|Footer Font
+|default
+|0.85rem
+|0.7rem
+|===
+
+=== Mobile-Specific Enhancements
+
+[source,css]
+----
+@media screen and (max-width: 480px) {
+    /* Disable rotation for cleaner mobile appearance */
+    .rotate-left,
+    .rotate-left-center,
+    .rotate-right-center,
+    .rotate-right {
+        transform: rotate(0deg) !important;
+    }
+    
+    /* Simpler hover effect */
+    .image-container:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Right-align dropdown to prevent overflow */
+    .dropdown-menu {
+        left: auto;
+        right: 0;
+    }
+    
+    /* Prevent menu wrapping */
+    .top-nav ul {
+        flex-wrap: nowrap;
+    }
+    
+    .nav-button {
+        white-space: nowrap;
+    }
+}
+----
+
+== Responsive CSS Strategy
+
+=== Mobile-First Approach
+
+While the base styles target desktop, the media queries progressively enhance for smaller screens:
+
+[source,css]
+----
+/* Base styles (desktop) */
+:root {
+    --image-size: 250px;
+    --gallery-gap: 40px;
+}
+
+/* Tablet adjustments */
+@media screen and (max-width: 768px) {
+    .image-container img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    figure {
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
+    }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+    .image-container img {
+        width: 140px;
+        height: 140px;
+    }
+    
+    figure {
+        gap: 20px;
+        grid-template-columns: 1fr;
+    }
+}
+----
+
+=== Flexbox Navigation
+
+The navigation uses flexbox for fluid responsiveness:
+
+[source,css]
+----
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.top-nav ul {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+}
+
+/* Mobile: tighter spacing */
+@media screen and (max-width: 480px) {
+    .top-nav ul {
+        gap: 4px;
+        flex-wrap: nowrap;
+    }
+}
+----
+
+=== CSS Grid Gallery
+
+The gallery uses CSS Grid with auto-fit for flexible columns:
+
+[source,css]
+----
+/* Desktop: flexible multi-column */
+figure {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+/* Tablet: 2 columns */
+@media screen and (max-width: 768px) {
+    figure {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
+        gap: 30px;
+        justify-content: center;
+    }
+}
+
+/* Mobile: single column */
+@media screen and (max-width: 480px) {
+    figure {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        justify-items: center;
+    }
+}
+----
+
+== Testing Responsive Design
+
+=== Browser DevTools
+
+Test responsive layouts using browser developer tools:
+
+1. **Chrome**: F12 → Toggle Device Toolbar (Ctrl+Shift+M)
+2. **Firefox**: F12 → Responsive Design Mode (Ctrl+Shift+M)
+3. **Safari**: Develop → Enter Responsive Design Mode
+
+=== Common Test Dimensions
+
+[cols="1,1,2"]
+|===
+|Device |Dimensions |Test Purpose
+
+|iPhone SE
+|375×667px
+|Smallest mobile viewport
+
+|iPhone 12/13
+|390×844px
+|Modern mobile
+
+|iPad
+|768×1024px
+|Tablet portrait
+
+|iPad Pro
+|1024×1366px
+|Large tablet
+
+|Laptop
+|1366×768px
+|Common desktop
+
+|Desktop
+|1920×1080px
+|Full HD desktop
+|===
+
+=== Responsive Checklist
+
+✓ Navigation items don't wrap or overflow +
+✓ Dropdown menu stays within viewport +
+✓ Images scale proportionally +
+✓ Text remains readable at all sizes +
+✓ Touch targets are at least 44×44px +
+✓ Footer content doesn't overflow +
+✓ No horizontal scrolling +
+✓ Hover effects work (desktop) or are disabled (mobile) +
+✓ Active page indicator visible +
+✓ Logo and branding clear at all sizes
+
+== Performance Considerations
+
+=== Optimizations Applied
+
+1. **CSS-Only Responsiveness**: No JavaScript required for layout adaptation
+2. **Single Stylesheet**: All breakpoints in one file, minimizing HTTP requests
+3. **CSS Variables**: Dynamic sizing without recalculating
+4. **Hardware Acceleration**: `transform` properties use GPU
+5. **Minimal Reflows**: Changes target specific elements
+
+=== Image Optimization
+
+While the current implementation uses fixed-size images, consider these enhancements:
+
+[source,html]
+----
+<!-- Responsive images with srcset -->
+<img src="images/metal1.jpg"
+     srcset="images/metal1-480w.jpg 480w,
+             images/metal1-768w.jpg 768w,
+             images/metal1-1200w.jpg 1200w"
+     sizes="(max-width: 480px) 140px,
+            (max-width: 768px) 180px,
+            250px"
+     alt="Project 1">
+----
+
+== Browser Compatibility
+
+=== Supported Features
+
+[cols="1,1,3"]
+|===
+|Feature |Requirement |Fallback
+
+|CSS Grid
+|Modern browsers
+|Flexbox fallback possible
+
+|CSS Variables
+|IE 11+
+|Static values as fallback
+
+|Media Queries
+|IE 9+
+|Desktop layout
+
+|Flexbox
+|IE 10+
+|Block layout fallback
+
+|Transform
+|IE 9+
+|No rotation effects
+|===
+
+=== Tested Browsers
+
+* Chrome 90+ ✓
+* Firefox 88+ ✓
+* Safari 14+ ✓
+* Edge 90+ ✓
+* Mobile Safari (iOS 12+) ✓
+* Chrome Mobile (Android 8+) ✓
+
+== Best Practices
+
+=== Do's
+
+* ✓ Test on real devices when possible
+* ✓ Use relative units (rem, %, vw) where appropriate
+* ✓ Maintain aspect ratios for images
+* ✓ Keep touch targets large enough (44×44px minimum)
+* ✓ Ensure adequate color contrast at all sizes
+* ✓ Test with browser zoom (125%, 150%)
+
+=== Don'ts
+
+* ✗ Don't rely solely on emulators
+* ✗ Don't use fixed pixel widths for text containers
+* ✗ Don't hide important content on mobile
+* ✗ Don't use small fonts (<16px for body text)
+* ✗ Don't ignore landscape orientation
+* ✗ Don't forget to test slow connections
+
+== Future Enhancements
+
+Potential responsive improvements:
+
+1. **Container Queries**: Adapt components based on container size (CSS Container Queries)
+2. **Responsive Images**: Use `srcset` and `<picture>` for optimized loading
+3. **Landscape Modes**: Specific styles for landscape mobile orientation
+4. **Print Styles**: Optimized `@media print` stylesheet
+5. **Reduced Motion**: Respect `prefers-reduced-motion` user preference
+6. **Dark Mode**: `prefers-color-scheme` media query support
+7. **High DPI**: Retina/HiDPI image alternatives
+
+[source,css]
+----
+/* Future: Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Future: Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #1a1a1a;
+        --color-text-dark: #e0e0e0;
+    }
+}
+----
+
+== Summary
+
+The WebUp responsive design system provides:
+
+* **3 Breakpoints**: Desktop (>768px), Tablet (≤768px), Mobile (≤480px)
+* **Fluid Layouts**: CSS Grid and Flexbox for adaptability
+* **Optimized Performance**: CSS-only, hardware-accelerated transforms
+* **Progressive Enhancement**: Core content accessible on all devices
+* **Visual Documentation**: SVG screenshots showing each layout mode
+* **Comprehensive Testing**: Checklist and browser compatibility matrix
+
+For implementation details, see:
+
+* link:../README.adoc[Main README]
+* link:index.adoc[Full Documentation]
+* link:quick-reference.adoc[Quick Reference]
+* link:theming.adoc[CSS Theming Guide]

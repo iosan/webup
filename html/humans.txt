@@ -8,22 +8,29 @@ Thanks to the open-source community for inspiration and tools.
 
 /* SITE */
 Last update: 2025/11/06
+Version: 0.5.0
 Standards: HTML5, CSS3, Accessibility (WCAG)
-Components: Semantic HTML, Responsive CSS, SEO Optimization
-Software: VS Code, Git, GIMP
+Components: Semantic HTML, Responsive CSS, SEO Optimization, Fixed Navigation, Dropdown Menu
+Software: VS Code, Git, GIMP, PlantUML, AsciiDoctor
 Languages: HTML, CSS
-Design: Industrial Metal Engineering Theme
+Design: Industrial Metal Engineering Theme (Adaptable Template)
 Color Scheme: Dark Sepia (#3d2f21) with Light Gray (#f4f4f4)
 
 /* FEATURES */
-- Responsive Design
-- Accessibility (ARIA labels)
+- Fully Responsive Design (Desktop, Tablet, Mobile)
+- Fixed Top Navigation Bar
+- Button-Style Menu with Dropdown
+- Active Page Indicators
+- Accessibility (ARIA labels, keyboard navigation)
 - SEO Optimized
 - Privacy Compliant
 - Paper Shadow Effects
-- Image Gallery
-- Fixed Footer
-- Custom Logo
+- Interactive Image Gallery
+- Scrolling Footer with W3C Badges
+- Custom Logo (32px responsive)
+- CSS Variables for Theming
+- Architecture Diagrams
+- Comprehensive Documentation
 
 /* NOTE */
 Placeholder images must be replaced with properly licensed images before commercial use.

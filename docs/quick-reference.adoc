@@ -9,7 +9,7 @@ toc::[]
 [cols="1,2"]
 |===
 |Project |WebUp Industrial Engineering
-|Version |0.1.0
+|Version |0.5.0
 |Date |November 6, 2025
 |Author |iosan
 |License |MIT License
@@ -60,13 +60,109 @@ webup/
 
 [source,css]
 ----
---logo-size: 80px;
---logo-position-left: 20px;
---gallery-gap: 40px;
---image-size: 250px;
+--gallery-gap: 40px;         # 30px tablet, 20px mobile
+--image-size: 250px;         # 180px tablet, 140px mobile
+--image-padding: 15px;       # 10px tablet, 8px mobile
 --image-rotation-small: 3deg;
 --image-rotation-large: 6deg;
 ----
+
+=== Responsive Breakpoints
+
+[source,css]
+----
+/* Tablet */
+@media screen and (max-width: 768px) { /* ... */ }
+
+/* Mobile */
+@media screen and (max-width: 480px) { /* ... */ }
+----
+
+== Navigation Structure
+
+=== Fixed Top Navigation
+
+[source,html]
+----
+<nav class="top-nav" aria-label="Main navigation">
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/gear.png" alt="WebUp Logo">
+        </a>
+    </div>
+    <ul>
+        <li><a href="index.html" class="nav-button" aria-current="page">Home</a></li>
+        <li><a href="about.html" class="nav-button">About</a></li>
+        <li><a href="contact.html" class="nav-button">Contact</a></li>
+        <li class="dropdown">
+            <button class="nav-button dropdown-toggle">Projects ▾</button>
+            <ul class="dropdown-menu">
+                <li><a href="image1.html">Project 1</a></li>
+                <!-- ... more projects ... -->
+            </ul>
+        </li>
+    </ul>
+</nav>
+----
+
+=== Navigation CSS Classes
+
+[cols="1,2"]
+|===
+|Class |Purpose
+
+|`.top-nav`
+|Fixed navigation bar container
+
+|`.nav-button`
+|Button-style menu items
+
+|`.dropdown`
+|Dropdown menu container
+
+|`.dropdown-toggle`
+|Button that triggers dropdown
+
+|`.dropdown-menu`
+|Hidden menu that appears on hover
+|===
+
+== Responsive Sizing Quick Reference
+
+[cols="2,1,1,1"]
+|===
+|Element |Desktop |Tablet (≤768px) |Mobile (≤480px)
+
+|Logo Size
+|32px
+|28px
+|24px
+
+|Header Margin
+|48px
+|40px
+|32px
+
+|Gallery Images
+|250px
+|180px
+|140px
+
+|Image Padding
+|15px
+|10px
+|8px
+
+|Nav Button
+|8/16px
+|6/12px
+|5/8px
+
+|H1 Size
+|default
+|1.5rem
+|1.2rem
+|===
 
 == Quick Theme Examples
 
@@ -321,7 +417,7 @@ Build command: (none)
 
 * Repository: https://github.com/iosan/webup
 * Issues: https://github.com/iosan/webup/issues
-* Branch: v0.1.0
+* Branch: v0.5.0
 * License: MIT
 
 == Image Licensing Warning
@@ -341,6 +437,6 @@ Document all image sources and licenses!
 
 ---
 
-*WebUp Industrial Engineering v0.1.0* +
+*WebUp Industrial Engineering v0.5.0* +
 *Copyright © 2025 iosan* +
 *Last Updated: November 6, 2025*

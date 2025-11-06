@@ -4,7 +4,7 @@
 
 > **Note:** The metal/industrial engineering theme is used as a random example context. This template is versatile and can be easily adapted for any purpose — portfolios, small businesses, personal projects, non-profits, or any other use case by simply changing the content, images, and branding.
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.5.0-blue.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![SEO Optimized](https://img.shields.io/badge/SEO-Optimized-green.svg)
@@ -17,19 +17,24 @@
 ## ✨ Features
 
 - 🎨 **Modern Design** - Clean HTML5 structure with semantic elements and ARIA labels
-- 📱 **Responsive Layout** - Works seamlessly across different screen sizes
+- 📱 **Fully Responsive** - Adaptive layout with tablet (≤768px) and mobile (≤480px) breakpoints
+- 🧭 **Fixed Navigation Bar** - Button-style menu with dropdown for projects, stays visible while scrolling
+- 🎯 **Active Page Indicator** - Current page highlighted in navigation menu
+- 📱 **Mobile Optimized** - Scaled-down navigation, headings, content, and images for smaller screens
 - 🖼️ **Interactive Gallery** - 5 metal engineering projects with paper shadow effects and rotation
+- 🎨 **Button-Style Menu** - Modern navigation with hover effects, borders, and smooth transitions
+- 📂 **Dropdown Menu** - Collapsible Projects menu with all 5 project detail pages
 - ✅ **W3C Validated** - HTML5 and CSS3 pass official W3C validation with badge links in footer
 - 🏗️ **Architecture Diagrams** - 7 PlantUML diagrams documenting structure, flow, and deployment
 - 🔧 **Build Automation** - Makefile targets for diagrams, PDFs, and validation
 - 📚 **Learning Resources** - Curated HTML5/CSS learning path with milestones and exercises
 - 🔗 **Multi-Page Navigation** - Home, About, Contact, Impressum, and individual project detail pages
-- ⚙️ **Custom Branding** - Gear logo with favicon support
+- ⚙️ **Custom Branding** - Compact 32px logo in navigation bar with favicon support
 - 🎭 **Watermarked Backgrounds** - Beautiful project images as backgrounds on detail pages
 - 🎨 **CSS Variable Theming** - Easy customization with centralized theme configuration
 - 🌈 **5 Ready-Made Themes** - Blue, Gray, Green, Orange, and Navy color schemes included
 - 🎨 **Dark Sepia Theme** - Warm, earthy color scheme for professional industrial look (default)
-- ♿ **Accessibility** - ARIA labels, semantic HTML, and keyboard navigation support
+- ♿ **Accessibility** - ARIA labels, semantic HTML, keyboard navigation, and focus management
 - 🔍 **SEO Optimized** - Meta descriptions, keywords, sitemap.xml, and proper heading structure
 - 🔒 **Privacy Compliant** - About, Contact, and Impressum pages excluded from search engines
 - 🤖 **Crawler Control** - robots.txt for search engine management
@@ -48,17 +53,18 @@ webup/
 ├── 📄 README.md               # This file
 ├── 📄 CHANGELOG.md            # Version history
 ├── 📄 CONTRIBUTING.md         # Contribution guidelines
-├── � Makefile                # Build automation (diagrams, PDFs, validation)
-├── �📁 docs/                   # Documentation (AsciiDoc)
+├── 📄 Makefile                # Build automation (diagrams, PDFs, validation)
+├── 📁 docs/                   # Documentation (AsciiDoc)
 │   ├── 📄 README.adoc         # Documentation index
 │   ├── 📄 index.adoc          # Main documentation
 │   ├── 📄 theming.adoc        # CSS theming guide
 │   ├── 📄 deployment.adoc     # Deployment instructions
 │   ├── 📄 quick-reference.adoc # Quick reference card
-│   ├── � learning.adoc       # HTML5/CSS learning guide
+│   ├── 📄 responsive-design.adoc # Responsive design guide
+│   ├── 📄 learning.adoc       # HTML5/CSS learning guide
 │   ├── 📄 diagrams.adoc       # Architecture diagrams gallery
 │   ├── 📄 BUILD.adoc          # Build instructions
-│   ├── �📕 index.pdf           # Main documentation (PDF)
+│   ├── 📕 index.pdf           # Main documentation (PDF)
 │   ├── 📕 theming.pdf         # CSS theming guide (PDF)
 │   ├── 📕 deployment.pdf      # Deployment guide (PDF)
 │   ├── 📕 quick-reference.pdf # Quick reference (PDF)
@@ -73,15 +79,19 @@ webup/
 │   │   ├── seo-architecture.puml
 │   │   ├── theme-system.puml
 │   │   └── deployment-workflow.puml
-│   └── 📁 images/             # Rendered diagram PNGs
-│       ├── project-structure.png
-│       ├── html-structure.png
-│       ├── css-architecture.png
-│       ├── navigation-flow.png
-│       ├── seo-architecture.png
-│       ├── theme-system.png
-│       └── deployment-workflow.png
-└── �📁 html/                   # Website root
+│   ├── 📁 images/             # Rendered diagram PNGs
+│   │   ├── project-structure.png
+│   │   ├── html-structure.png
+│   │   ├── css-architecture.png
+│   │   ├── navigation-flow.png
+│   │   ├── seo-architecture.png
+│   │   ├── theme-system.png
+│   │   └── deployment-workflow.png
+│   └── 📁 screenshots/        # Responsive layout screenshots
+│       ├── desktop-layout.svg
+│       ├── tablet-layout.svg
+│       └── mobile-layout.svg
+└── 📁 html/                   # Website root
     ├── 🏠 index.html          # Homepage with project gallery
     ├── 📖 about.html          # About page (excluded from search)
     ├── 📧 contact.html        # Contact page (excluded from search)
@@ -93,13 +103,13 @@ webup/
     ├── 🖼️ image5.html         # Project detail page 5
     ├── 🤖 robots.txt          # Web crawler control file
     ├── 🗺️ sitemap.xml         # SEO sitemap
-    ├── � humans.txt          # Credits and info
-    ├── �📁 css/
+    ├── 👥 humans.txt          # Credits and info
+    ├── 📁 css/
     │   ├── 🎨 style.css       # Main stylesheet with CSS variables
     │   └── 📄 themes.md       # Theme variations guide
     └── 📁 images/
         ├── ⚙️ gear.ico        # Browser favicon
-        ├── ⚙️ gear.png        # Site logo (80x80px)
+        ├── ⚙️ gear.png        # Site logo (32x32px in nav, 80x80px original)
         ├── ✅ validator-html5.svg  # HTML5 validation badge
         ├── ✅ validator-css.svg    # CSS validation badge
         ├── 🖼️ metal1.jpg      # Gallery image 1 (placeholder)
@@ -108,6 +118,25 @@ webup/
         ├── 🖼️ metal4.jpg      # Gallery image 4 (placeholder)
         └── 🖼️ metal5.jpg      # Gallery image 5 (placeholder)
 ```
+
+---
+
+## 🧭 Navigation Features
+
+### Fixed Top Navigation Bar
+- **Always Visible**: Navigation stays at the top while scrolling
+- **Compact Logo**: 32px logo on the left side of the nav bar
+- **Button-Style Menu Items**: Modern appearance with hover effects and borders
+- **Active Page Highlighting**: Current page shown with background and border styling
+- **Dropdown Menu**: "Projects" button reveals links to all 5 project detail pages
+- **Keyboard Accessible**: Full keyboard navigation and focus management
+- **Responsive**: Scales down on tablet (28px logo, smaller buttons) and mobile (24px logo, compact layout)
+
+### Responsive Behavior
+The navigation adapts to different screen sizes:
+- **Desktop (>768px)**: Full-size nav with 32px logo, standard button padding
+- **Tablet (≤768px)**: Reduced to 28px logo, smaller gaps, 40px top margin
+- **Mobile (≤480px)**: Compact 24px logo, minimal spacing, 32px top margin
 
 ---
 
@@ -170,7 +199,35 @@ Then open `http://localhost:8000` in your browser.
 
 ---
 
-## 🔧 Build & Validation
+## � Responsive Design
+
+The website is fully responsive with three optimized layout modes:
+
+### Desktop (>768px)
+- Full-size navigation with 32px logo
+- Multi-column gallery with rotation effects
+- 250px image boxes with generous spacing
+- Complete visual experience
+
+### Tablet (≤768px)
+- Scaled navigation with 28px logo
+- 2-column auto-fit gallery grid
+- 180px image boxes with reduced spacing
+- Optimized typography (0.95rem)
+
+### Mobile (≤480px)
+- Compact navigation with 24px logo
+- Single-column centered gallery
+- 140px image boxes, minimal spacing
+- No rotation effects for cleaner look
+- Right-aligned dropdown menu
+- Stacked footer badges
+
+**📸 See detailed layouts with screenshots**: `docs/responsive-design.adoc`
+
+---
+
+## �🔧 Build & Validation
 
 ### Build Documentation and Diagrams
 
@@ -224,12 +281,17 @@ The website now uses CSS variables for easy theming! Edit `html/css/style.css`:
 ```css
 :root {
     /* Change these variables to customize your theme */
-    --color-primary: #3d2f21;        /* Header/footer background */
+    --color-primary: #3d2f21;        /* Header/footer/nav background */
     --color-background: #f4f4f4;     /* Content background */
     --color-text-dark: #333;         /* Main text color */
     --spacing-md: 40px;              /* Adjust spacing */
-    --logo-size: 80px;               /* Logo dimensions */
-    --image-size: 250px;             /* Gallery image size */
+    --image-size: 250px;             /* Gallery image size (180px tablet, 140px mobile) */
+    
+    /* Responsive breakpoints automatically adjust:
+       - Navigation: 32px → 28px → 24px logo
+       - Images: 250px → 180px → 140px boxes
+       - Typography: Scaled down at 768px and 480px
+    */
 }
 ```
 
@@ -379,9 +441,11 @@ All colors, spacing, and sizes use CSS variables for easy customization!
 
 ---
 
-## 📝 Version History
+## � Version History
 
-### v0.1.0 (Current - November 6, 2025)
+### v0.5.0 (Current - November 6, 2025)
+
+**Major Release - Responsive Design & Navigation Improvements**
 - ✨ Initial release
 - 🎨 Dark sepia theme with warm industrial aesthetics
 - 🌈 CSS variables system with 5 ready-made alternative themes

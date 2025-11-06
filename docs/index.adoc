@@ -1,6 +1,6 @@
 = WebUp Industrial Engineering - Documentation
 iosan <https://github.com/iosan/webup>
-v0.1.0, 2025-11-06
+v0.5.0, 2025-11-06
 :toc: left
 :toclevels: 3
 :sectnums:
@@ -17,13 +17,15 @@ Welcome to the WebUp Industrial Engineering documentation. This project is a mod
 WebUp is a professional HTML5/CSS3 website designed for industrial engineering companies specializing in metal fabrication, CNC machining, and manufacturing services.
 
 .Key Features
-* Responsive design for all devices
+* Fully responsive design with mobile (≤480px) and tablet (≤768px) breakpoints
+* Fixed navigation bar with button-style menu and dropdown
+* Active page indicators in navigation
 * Accessibility compliant (WCAG standards)
 * SEO optimized with meta tags and sitemap
 * Privacy compliant (robots.txt, noindex tags)
 * Modern CSS with variable-based theming
 * Interactive image gallery with paper shadow effects
-* Fixed footer with clean navigation
+* Scrolling footer with W3C validator badges
 
 === Technology Stack
 
@@ -35,14 +37,25 @@ WebUp is a professional HTML5/CSS3 website designed for industrial engineering c
 |Semantic markup with ARIA labels
 
 |CSS3
-|Modern styling with CSS variables
+|Modern styling with CSS variables and media queries
+
+|Responsive Design
+|3 breakpoints: Desktop (>768px), Tablet (≤768px), Mobile (≤480px)
 
 |Git
-|Version control on branch v0.1.0
+|Version control on branch v0.5.0
 
-|AsciiDoc
-|Documentation format
+|PlantUML
+|Architecture diagram generation
+
+|PlantUML
+|Architecture diagram generation
 |===
+
+[TIP]
+====
+For detailed responsive layout information with visual examples, see link:responsive-design.adoc[Responsive Design Guide].
+====
 
 == Getting Started
 
@@ -61,11 +74,11 @@ WebUp is a professional HTML5/CSS3 website designed for industrial engineering c
 cd webup
 ----
 
-. Switch to the v0.1.0 branch:
+. Switch to the v0.5.0 branch:
 +
 [source,bash]
 ----
-git checkout v0.1.0
+git checkout v0.5.0
 ----
 
 +
@@ -168,15 +181,118 @@ The stylesheet is segmented for maintainability:
 
 * CSS Variables (design tokens)
 * Global Styles (reset + body)
-* Header Styles
-* Logo Styles
-* Navigation Styles
+* Visually Hidden Utility (.sr-only)
+* Top Navigation Bar (fixed position with logo and menu)
+* Header Styles (centered title)
 * Content Area Styles
 * Watermark Background Styles
 * Image Gallery Styles
-* Footer Styles
+* Footer Styles (scrolling with validator badges)
+* Responsive Media Queries (tablet and mobile breakpoints)
 
 Each segment consumes tokens from `:root` for consistent theming.
+
+== Navigation System
+
+=== Fixed Top Navigation Bar
+
+The website features a modern fixed navigation bar that stays visible while scrolling:
+
+* **Position**: Fixed at the top of the viewport (z-index: 1000)
+* **Logo**: 32px gear logo on the left, links to homepage
+* **Menu Items**: Centered button-style links (Home, About, Contact, Projects)
+* **Dropdown**: Projects menu reveals links to all 5 project detail pages
+* **Active State**: Current page highlighted with background and border
+* **Responsive**: Scales down for tablet (28px logo) and mobile (24px logo)
+
+[source,html]
+----
+<nav class="top-nav" aria-label="Main navigation">
+    <div class="logo">
+        <a href="index.html" aria-label="WebUp Home">
+            <img src="images/gear.png" alt="WebUp Logo">
+        </a>
+    </div>
+    <ul>
+        <li><a href="index.html" class="nav-button" aria-current="page">Home</a></li>
+        <li><a href="about.html" class="nav-button">About</a></li>
+        <li><a href="contact.html" class="nav-button">Contact</a></li>
+        <li class="dropdown">
+            <button class="nav-button dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                Projects ▾
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="image1.html">Project 1</a></li>
+                <li><a href="image2.html">Project 2</a></li>
+                <li><a href="image3.html">Project 3</a></li>
+                <li><a href="image4.html">Project 4</a></li>
+                <li><a href="image5.html">Project 5</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+----
+
+=== Button-Style Menu Items
+
+Navigation items are styled as modern buttons with:
+
+* Transparent background with subtle borders
+* Padding: 8px vertical, 16px horizontal
+* Border radius for rounded corners
+* Hover effect: semi-transparent white background
+* Focus outline for keyboard navigation
+* Active page indicator: darker background and visible border
+
+[source,css]
+----
+.nav-button {
+    color: var(--color-white);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: all var(--transition-fast);
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+----
+
+=== Dropdown Menu
+
+The Projects dropdown provides access to all project detail pages:
+
+* **Hidden by Default**: `display: none`, `visibility: hidden`, `opacity: 0`
+* **Activated on Hover**: Uses `:hover` and `:focus-within` pseudo-classes
+* **Smooth Transition**: Fades in with opacity transition
+* **Elevated**: Box shadow creates depth and separation
+* **Accessible**: `aria-haspopup` and keyboard navigation support
+
+[source,css]
+----
+.dropdown-menu {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-white);
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity var(--transition-fast);
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+----
 
 == Features in Detail
 
@@ -184,20 +300,76 @@ Each segment consumes tokens from `:root` for consistent theming.
 
 The website adapts to different screen sizes using:
 
-* Flexbox layouts
-* Flexible images (`max-width: 100%`)
-* Viewport meta tag
-* Wrapped gallery for mobile devices
+* **CSS Media Queries**: Two breakpoints at 768px (tablet) and 480px (mobile)
+* **Flexbox Layouts**: Flexible navigation and content arrangement
+* **Flexible Images**: `max-width: 100%` and explicit sizing for breakpoints
+* **Viewport Meta Tag**: Ensures proper mobile rendering
+* **Responsive Navigation**: Logo and menu scale down on smaller screens
+* **Responsive Typography**: Font sizes reduce at tablet and mobile breakpoints
+* **Responsive Images**: Gallery boxes scale from 250px → 180px → 140px
+* **Single Column Layout**: Gallery switches to 1 column on mobile
+
+==== Breakpoint Details
+
+[cols="1,2,2,2"]
+|===
+|Element |Desktop (>768px) |Tablet (≤768px) |Mobile (≤480px)
+
+|Navigation Logo
+|32px
+|28px
+|24px
+
+|Header Margin
+|48px
+|40px
+|32px
+
+|Gallery Images
+|250px
+|180px
+|140px
+
+|Image Padding
+|15px
+|10px
+|8px
+
+|Gallery Gap
+|40px
+|30px
+|20px
+
+|H1 Font Size
+|Default
+|1.5rem
+|1.2rem
+
+|Body Font Size
+|Default
+|0.95rem
+|0.85rem
+
+|Nav Button Padding
+|8px 16px
+|6px 12px
+|5px 8px
+|===
 
 === Accessibility
 
 WCAG compliance features:
 
-* Semantic HTML5 elements (`<header>`, `<nav>`, `<main>`, `<footer>`, `<article>`)
-* ARIA labels for navigation and content sections
+* Semantic HTML5 elements (`<header>`, `<nav>`, `<main>`, `<footer>`, `<figure>`)
+* ARIA labels for navigation (`aria-label`, `aria-current`)
+* ARIA attributes for dropdown (`aria-haspopup`, `aria-expanded`)
 * Proper heading hierarchy (h1 → h2)
 * Descriptive alt text for images
-* Keyboard navigation support
+* Keyboard navigation support with focus styles
+* Focus management with `:focus-within` for dropdowns
+* Screen-reader-only content with `.sr-only` class
+* Sufficient color contrast ratios
+* Skip-to-content functionality (implicit with fixed nav)
 * Sufficient color contrast ratios
 
 === SEO Optimization
@@ -487,7 +659,7 @@ The placeholder images (metal1-5.jpg, gear.png, gear.ico) are NOT covered by the
 
 * GitHub Issues: https://github.com/iosan/webup/issues
 * Repository: https://github.com/iosan/webup
-* Branch: v0.1.0
+* Branch: v0.5.0
 
 == Appendix
 
@@ -554,5 +726,5 @@ The website targets these SEO keywords:
 ---
 
 *Last Updated:* November 6, 2025 +
-*Version:* 0.1.0 +
+*Version:* 0.5.0 +
 *Author:* iosan
