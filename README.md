@@ -7,6 +7,8 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![SEO Optimized](https://img.shields.io/badge/SEO-Optimized-green.svg)
 ![Accessibility](https://img.shields.io/badge/A11y-WCAG-blue.svg)
+![Valid HTML5](https://img.shields.io/badge/HTML5-Valid-brightgreen.svg)
+![Valid CSS3](https://img.shields.io/badge/CSS3-Valid-brightgreen.svg)
 
 ---
 
@@ -15,6 +17,10 @@
 - 🎨 **Modern Design** - Clean HTML5 structure with semantic elements and ARIA labels
 - 📱 **Responsive Layout** - Works seamlessly across different screen sizes
 - 🖼️ **Interactive Gallery** - 5 metal engineering projects with paper shadow effects and rotation
+- ✅ **W3C Validated** - HTML5 and CSS3 pass official W3C validation with badge links in footer
+- 🏗️ **Architecture Diagrams** - 7 PlantUML diagrams documenting structure, flow, and deployment
+- 🔧 **Build Automation** - Makefile targets for diagrams, PDFs, and validation
+- 📚 **Learning Resources** - Curated HTML5/CSS learning path with milestones and exercises
 - 🔗 **Multi-Page Navigation** - Home, About, Contact, Impressum, and individual project detail pages
 - ⚙️ **Custom Branding** - Gear logo with favicon support
 - 🎭 **Watermarked Backgrounds** - Beautiful project images as backgrounds on detail pages
@@ -40,16 +46,39 @@ webup/
 ├── 📄 README.md               # This file
 ├── 📄 CHANGELOG.md            # Version history
 ├── 📄 CONTRIBUTING.md         # Contribution guidelines
-├── 📁 docs/                   # Documentation (AsciiDoc)
+├── � Makefile                # Build automation (diagrams, PDFs, validation)
+├── �📁 docs/                   # Documentation (AsciiDoc)
 │   ├── 📄 README.adoc         # Documentation index
 │   ├── 📄 index.adoc          # Main documentation
 │   ├── 📄 theming.adoc        # CSS theming guide
 │   ├── 📄 deployment.adoc     # Deployment instructions
 │   ├── 📄 quick-reference.adoc # Quick reference card
-│   ├── 📕 index.pdf           # Main documentation (PDF)
+│   ├── � learning.adoc       # HTML5/CSS learning guide
+│   ├── 📄 diagrams.adoc       # Architecture diagrams gallery
+│   ├── 📄 BUILD.adoc          # Build instructions
+│   ├── �📕 index.pdf           # Main documentation (PDF)
 │   ├── 📕 theming.pdf         # CSS theming guide (PDF)
 │   ├── 📕 deployment.pdf      # Deployment guide (PDF)
-│   └── 📕 quick-reference.pdf # Quick reference (PDF)
+│   ├── 📕 quick-reference.pdf # Quick reference (PDF)
+│   ├── 📕 learning.pdf        # Learning guide (PDF)
+│   ├── 📕 diagrams.pdf        # Diagrams gallery (PDF)
+│   ├── 📕 BUILD.pdf           # Build instructions (PDF)
+│   ├── 📁 diagrams/           # PlantUML source files
+│   │   ├── project-structure.puml
+│   │   ├── html-structure.puml
+│   │   ├── css-architecture.puml
+│   │   ├── navigation-flow.puml
+│   │   ├── seo-architecture.puml
+│   │   ├── theme-system.puml
+│   │   └── deployment-workflow.puml
+│   └── 📁 images/             # Rendered diagram PNGs
+│       ├── project-structure.png
+│       ├── html-structure.png
+│       ├── css-architecture.png
+│       ├── navigation-flow.png
+│       ├── seo-architecture.png
+│       ├── theme-system.png
+│       └── deployment-workflow.png
 └── �📁 html/                   # Website root
     ├── 🏠 index.html          # Homepage with project gallery
     ├── 📖 about.html          # About page (excluded from search)
@@ -69,6 +98,8 @@ webup/
     └── 📁 images/
         ├── ⚙️ gear.ico        # Browser favicon
         ├── ⚙️ gear.png        # Site logo (80x80px)
+        ├── ✅ validator-html5.svg  # HTML5 validation badge
+        ├── ✅ validator-css.svg    # CSS validation badge
         ├── 🖼️ metal1.jpg      # Gallery image 1 (placeholder)
         ├── 🖼️ metal2.jpg      # Gallery image 2 (placeholder)
         ├── 🖼️ metal3.jpg      # Gallery image 3 (placeholder)
@@ -133,6 +164,51 @@ cd html && php -S localhost:8000
 ```
 
 Then open `http://localhost:8000` in your browser.
+
+---
+
+## 🔧 Build & Validation
+
+### Build Documentation and Diagrams
+
+The project includes a `Makefile` for automating diagram generation and PDF documentation:
+
+```bash
+# Regenerate all PlantUML diagrams to PNG
+make diagrams
+
+# Build all documentation PDFs
+make pdfs
+
+# Both diagrams and PDFs
+make docs
+
+# Validate HTML and CSS (requires network)
+make validate-html
+make validate-css
+make validate-all
+```
+
+**Docker alternatives** (if you don't have PlantUML or asciidoctor-pdf installed locally):
+
+```bash
+make docker-diagrams
+make docker-pdfs
+```
+
+See `docs/BUILD.adoc` for detailed build instructions and prerequisites.
+
+### W3C Validation
+
+Every page includes W3C validator badges in the footer. Click them to validate:
+- **HTML5**: Uses Nu HTML Checker
+- **CSS3**: Uses Jigsaw CSS Validator
+
+Or validate locally:
+
+```bash
+make validate-all
+```
 
 ---
 
@@ -307,15 +383,20 @@ All colors, spacing, and sizes use CSS variables for easy customization!
 - 🎨 Dark sepia theme with warm industrial aesthetics
 - 🌈 CSS variables system with 5 ready-made alternative themes
 - 🖼️ 5-project gallery with paper shadows and rotation effects
-- 📱 Responsive design for all devices
+- ✅ W3C validated HTML5 and CSS3 with interactive validator badges in footer
+- 🏗️ Architecture documentation with 7 PlantUML diagrams (project structure, HTML, CSS, navigation, SEO, theming, deployment)
+- � Diagrams gallery (diagrams.adoc) with thumbnail index and full-size views
+- 🔧 Build automation via Makefile (diagrams, PDFs, validation)
+- 📚 Learning guide (learning.adoc) with curated HTML5/CSS resources and milestones
+- �📱 Responsive design for all devices
 - ⚙️ Custom gear logo and favicon
-- ♿ Full accessibility features with ARIA labels
+- ♿ Full accessibility features with ARIA labels and semantic HTML (`<figure>`, `<figcaption>`)
 - 🔍 SEO optimized with meta tags, keywords, and sitemap.xml
 - 🔒 Privacy-compliant pages (About, Contact, Impressum excluded from search)
 - 🤖 robots.txt for crawler management
 - 👥 humans.txt for credits and technology info
 - 🎭 Watermarked backgrounds on project detail pages
-- 📚 Comprehensive AsciiDoc documentation (setup, theming, deployment)
+- 📚 Comprehensive AsciiDoc documentation (setup, theming, deployment, learning, build, diagrams)
 - 📋 Professional project setup (.gitignore, LICENSE, CHANGELOG, CONTRIBUTING)
 - ⚠️ **Note**: Placeholder images must be replaced with properly licensed images before commercial use
 
@@ -338,12 +419,18 @@ Comprehensive documentation is available in the `docs/` folder (AsciiDoc and PDF
 - **[Theming Guide](docs/theming.adoc)** - CSS customization and themes
 - **[Deployment Guide](docs/deployment.adoc)** - Hosting and deployment instructions
 - **[Quick Reference Card](docs/quick-reference.adoc)** - Fast lookup guide for common tasks
+- **[Learning Guide](docs/learning.adoc)** - HTML5/CSS learning path with resources and milestones
+- **[Architecture Diagrams](docs/diagrams.adoc)** - All 7 architecture diagrams in one gallery
+- **[Build Instructions](docs/BUILD.adoc)** - How to regenerate diagrams and PDFs
 
 **PDF Format:**
-- **[Main Documentation (PDF)](docs/index.pdf)** - Complete project guide (4.7 MB)
-- **[Theming Guide (PDF)](docs/theming.pdf)** - CSS customization and themes (3.1 MB)
-- **[Deployment Guide (PDF)](docs/deployment.pdf)** - Hosting and deployment instructions (4.3 MB)
-- **[Quick Reference Card (PDF)](docs/quick-reference.pdf)** - Fast lookup guide (1.9 MB)
+- **[Main Documentation (PDF)](docs/index.pdf)** - Complete project guide
+- **[Theming Guide (PDF)](docs/theming.pdf)** - CSS customization and themes
+- **[Deployment Guide (PDF)](docs/deployment.pdf)** - Hosting and deployment instructions
+- **[Quick Reference Card (PDF)](docs/quick-reference.pdf)** - Fast lookup guide
+- **[Learning Guide (PDF)](docs/learning.pdf)** - HTML5/CSS learning resources
+- **[Architecture Diagrams (PDF)](docs/diagrams.pdf)** - All diagrams printable
+- **[Build Instructions (PDF)](docs/BUILD.pdf)** - Build automation guide
 
 View AsciiDoc files using:
 - VS Code with AsciiDoc extension
