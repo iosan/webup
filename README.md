@@ -2,6 +2,8 @@
 
 > A modern, responsive HTML5 website showcasing industrial metal engineering, fabrication, and CNC machining projects with elegant design and accessibility features.
 
+> **Note:** The metal/industrial engineering theme is used as a random example context. This template is versatile and can be easily adapted for any purpose — portfolios, small businesses, personal projects, non-profits, or any other use case by simply changing the content, images, and branding.
+
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
@@ -116,6 +118,7 @@ webup/
 **The current images in the `html/images/` folder are placeholders and must be replaced before commercial use.**
 
 - Replace `metal1.jpg` through `metal5.jpg` with your own photos or properly licensed images
+- The metal industry theme is just a random example — adapt the content for your actual project (portfolio, business, blog, showcase, etc.)
 - Ensure you have the rights to use all images on your website
 - Consider using:
   - Your own photography of projects/machinery
