@@ -44,7 +44,12 @@ webup/
 │   ├── 📄 README.adoc         # Documentation index
 │   ├── 📄 index.adoc          # Main documentation
 │   ├── 📄 theming.adoc        # CSS theming guide
-│   └── � deployment.adoc     # Deployment instructions
+│   ├── 📄 deployment.adoc     # Deployment instructions
+│   ├── 📄 quick-reference.adoc # Quick reference card
+│   ├── 📕 index.pdf           # Main documentation (PDF)
+│   ├── 📕 theming.pdf         # CSS theming guide (PDF)
+│   ├── 📕 deployment.pdf      # Deployment guide (PDF)
+│   └── 📕 quick-reference.pdf # Quick reference (PDF)
 └── �📁 html/                   # Website root
     ├── 🏠 index.html          # Homepage with project gallery
     ├── 📖 about.html          # About page (excluded from search)
@@ -326,11 +331,19 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 📚 Documentation
 
-Comprehensive documentation is available in the `docs/` folder (AsciiDoc format):
+Comprehensive documentation is available in the `docs/` folder (AsciiDoc and PDF formats):
 
+**AsciiDoc Format:**
 - **[Main Documentation](docs/index.adoc)** - Complete project guide
 - **[Theming Guide](docs/theming.adoc)** - CSS customization and themes
 - **[Deployment Guide](docs/deployment.adoc)** - Hosting and deployment instructions
+- **[Quick Reference Card](docs/quick-reference.adoc)** - Fast lookup guide for common tasks
+
+**PDF Format:**
+- **[Main Documentation (PDF)](docs/index.pdf)** - Complete project guide (4.7 MB)
+- **[Theming Guide (PDF)](docs/theming.pdf)** - CSS customization and themes (3.1 MB)
+- **[Deployment Guide (PDF)](docs/deployment.pdf)** - Hosting and deployment instructions (4.3 MB)
+- **[Quick Reference Card (PDF)](docs/quick-reference.pdf)** - Fast lookup guide (1.9 MB)
 
 View AsciiDoc files using:
 - VS Code with AsciiDoc extension

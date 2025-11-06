@@ -1,0 +1,346 @@
+= WebUp Quick Reference Card
+:toc: macro
+:toclevels: 2
+
+toc::[]
+
+== Project Information
+
+[cols="1,2"]
+|===
+|Project |WebUp Industrial Engineering
+|Version |0.1.0
+|Date |November 6, 2025
+|Author |iosan
+|License |MIT License
+|Repository |https://github.com/iosan/webup
+|===
+
+== File Structure Quick Reference
+
+[source,text]
+----
+webup/
+├── docs/           # Documentation (AsciiDoc + PDF)
+├── html/           # Website root
+│   ├── *.html     # 9 HTML pages
+│   ├── css/       # Stylesheets
+│   └── images/    # Assets
+├── README.md
+├── LICENSE
+├── CHANGELOG.md
+└── CONTRIBUTING.md
+----
+
+== CSS Variables Reference
+
+=== Colors
+
+[source,css]
+----
+--color-primary: #3d2f21;
+--color-primary-light: #ddd;
+--color-background: #f4f4f4;
+--color-text-dark: #333;
+--color-text-medium: #666;
+--color-white: white;
+----
+
+=== Spacing
+
+[source,css]
+----
+--spacing-xs: 15px;
+--spacing-sm: 20px;
+--spacing-md: 40px;
+--spacing-lg: 100px;
+----
+
+=== Logo & Gallery
+
+[source,css]
+----
+--logo-size: 80px;
+--logo-position-left: 20px;
+--gallery-gap: 40px;
+--image-size: 250px;
+--image-rotation-small: 3deg;
+--image-rotation-large: 6deg;
+----
+
+== Quick Theme Examples
+
+=== Blue Industrial
+[source,css]
+----
+:root {
+    --color-primary: #1a3a52;
+    --color-primary-light: #85b3d1;
+    --color-background: #f0f4f8;
+}
+----
+
+=== Modern Gray
+[source,css]
+----
+:root {
+    --color-primary: #2c3e50;
+    --color-primary-light: #bdc3c7;
+    --color-background: #ecf0f1;
+}
+----
+
+=== Deep Green
+[source,css]
+----
+:root {
+    --color-primary: #1e3a1a;
+    --color-primary-light: #a8d5ba;
+    --color-background: #f1f8f4;
+}
+----
+
+== Common Tasks
+
+=== Local Development
+
+[source,bash]
+----
+# Python HTTP server
+cd html && python -m http.server 8000
+
+# Node.js HTTP server
+cd html && npx http-server -p 8000
+----
+
+=== Update Colors
+
+. Open `html/css/style.css`
+. Find `:root` section
+. Change color variables
+. Save and refresh browser
+
+=== Replace Images
+
+. Add images to `html/images/`
+. Name: `metal1.jpg` through `metal5.jpg`
+. Recommended size: 250x250px or larger
+. Ensure proper licensing
+
+=== Add New Page
+
+. Create `html/newpage.html`
+. Copy structure from existing page
+. Update navigation in all HTML files
+. Add to `html/sitemap.xml`
+
+== SEO Keywords
+
+Target keywords:
+----
+metal, steel, industrial, machinery,
+engineering, fabrication, cnc
+----
+
+== Page Types
+
+[cols="1,2,1"]
+|===
+|Page |Purpose |Search Indexed
+
+|index.html
+|Homepage with gallery
+|✓ Yes
+
+|image1-5.html
+|Project details
+|✓ Yes
+
+|about.html
+|Company info
+|✗ No (noindex)
+
+|contact.html
+|Contact form
+|✗ No (noindex)
+
+|impressum.html
+|Legal notice
+|✗ No (noindex)
+|===
+
+== Browser Support
+
+[cols="1,1"]
+|===
+|Browser |Version
+
+|Chrome/Edge
+|Latest
+
+|Firefox
+|Latest
+
+|Safari
+|Latest
+
+|Opera
+|Latest
+
+|Mobile
+|iOS Safari, Chrome Mobile
+|===
+
+== Deployment Quick Commands
+
+=== GitHub Pages
+
+[source,bash]
+----
+git subtree push --prefix html origin gh-pages
+----
+
+=== FTP Upload
+
+[source,bash]
+----
+# Upload html/ folder contents to:
+/var/www/yourdomain.com
+# or
+/public_html
+----
+
+=== Netlify/Vercel
+
+----
+Publish directory: html
+Build command: (none)
+----
+
+== Pre-Deployment Checklist
+
+- [ ] Replace placeholder images
+- [ ] Update impressum.html
+- [ ] Change domain in sitemap.xml
+- [ ] Test all links
+- [ ] Validate HTML/CSS
+- [ ] Check accessibility
+- [ ] Test mobile responsiveness
+
+== Important Files
+
+[cols="1,2"]
+|===
+|File |Purpose
+
+|robots.txt
+|Search engine crawler control
+
+|sitemap.xml
+|SEO sitemap for search engines
+
+|humans.txt
+|Credits and project info
+
+|gear.ico
+|Browser favicon
+
+|gear.png
+|Site logo (80x80px)
+
+|style.css
+|Main stylesheet with variables
+|===
+
+== Common CSS Classes
+
+[cols="1,2"]
+|===
+|Class |Purpose
+
+|.content
+|Main content area
+
+|.image-gallery
+|Gallery container
+
+|.image-container
+|Individual image wrapper
+
+|.rotate-left
+|Rotate -6deg
+
+|.rotate-right
+|Rotate +6deg
+
+|.content-with-watermark
+|Background image overlay
+|===
+
+== Meta Tags Template
+
+[source,html]
+----
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="iosan">
+<meta name="description" content="Your description">
+<meta name="keywords" content="metal, steel, industrial, machinery, engineering, fabrication, cnc">
+<link rel="icon" type="image/x-icon" href="images/gear.ico">
+----
+
+== Documentation Files
+
+[cols="1,2"]
+|===
+|File |Description
+
+|docs/index.adoc
+|Main documentation (complete guide)
+
+|docs/theming.adoc
+|CSS theming and customization
+
+|docs/deployment.adoc
+|Deployment instructions
+
+|docs/*.pdf
+|PDF versions of all docs
+
+|README.md
+|Project overview
+
+|CHANGELOG.md
+|Version history
+
+|CONTRIBUTING.md
+|Contribution guidelines
+|===
+
+== Support & Links
+
+* Repository: https://github.com/iosan/webup
+* Issues: https://github.com/iosan/webup/issues
+* Branch: v0.1.0
+* License: MIT
+
+== Image Licensing Warning
+
+[WARNING]
+====
+Current images (metal1-5.jpg, gear.png, gear.ico) are placeholders.
+
+*MUST be replaced before commercial use* with:
+
+* Your own photography
+* Licensed stock photos
+* Free stock photos with attribution
+
+Document all image sources and licenses!
+====
+
+---
+
+*WebUp Industrial Engineering v0.1.0* +
+*Copyright © 2025 iosan* +
+*Last Updated: November 6, 2025*

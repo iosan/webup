@@ -7,9 +7,19 @@ Welcome to the WebUp Industrial Engineering documentation.
 
 === Available Documents
 
+*AsciiDoc Format:*
+
 * link:index.adoc[Main Documentation] - Complete project documentation
 * link:theming.adoc[CSS Theming Guide] - Theme customization guide
 * link:deployment.adoc[Deployment Guide] - Deployment instructions
+* link:quick-reference.adoc[Quick Reference Card] - Fast lookup guide
+
+*PDF Format:*
+
+* link:index.pdf[Main Documentation (PDF)] - Complete project documentation
+* link:theming.pdf[CSS Theming Guide (PDF)] - Theme customization guide
+* link:deployment.pdf[Deployment Guide (PDF)] - Deployment instructions
+* link:quick-reference.pdf[Quick Reference Card (PDF)] - Fast lookup guide
 
 === Quick Links
 
