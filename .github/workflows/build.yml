@@ -23,7 +23,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y plantuml graphviz
-          gem install asciidoctor asciidoctor-pdf
+          gem install asciidoctor asciidoctor-pdf --user-install
+          echo "$HOME/.local/share/gem/ruby/3.2.0/bin" >> $GITHUB_PATH
       
       - name: Build diagrams
         run: make diagrams
