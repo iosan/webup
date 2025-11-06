@@ -1,0 +1,65 @@
+@startuml css-architecture
+skinparam monochrome true
+skinparam shadowing false
+
+title CSS Architecture & Variable System
+
+package "style.css" {
+  component "Root Variables" as root
+  component "Global Styles" as global
+  component "Header Styles" as header
+  component "Logo Styles" as logostyles
+  component "Navigation" as nav
+  component "Content Area" as content
+  component "Watermark" as watermark
+  component "Image Gallery" as imggallery
+  component "Footer Styles" as footer
+}
+
+' Variable groups (listed as notes for compatibility)
+note right of root
+  Colors:
+  - --color-primary
+  - --color-primary-light
+  - --color-background
+  - --color-background-overlay
+  - --color-text-dark
+  - --color-text-medium
+  - --color-white
+
+  Spacing:
+  - --spacing-xs, --spacing-sm, --spacing-md, --spacing-lg
+
+  Logo:
+  - --logo-size, --logo-position-left
+
+  Gallery:
+  - --gallery-gap, --image-size, --image-padding
+  - --image-rotation-small, --image-rotation-large
+
+  Effects:
+  - --shadow-paper, --shadow-paper-hover
+  - --transition-fast
+
+  Typography:
+  - --font-family, --line-height-text
+end note
+
+' Dependencies from tokens to style sections
+root --> global : provides tokens
+root --> header : provides tokens
+root --> logostyles : provides tokens
+root --> nav : provides tokens
+root --> content : provides tokens
+root --> watermark : provides tokens
+root --> imggallery : provides tokens
+root --> footer : provides tokens
+
+note bottom of imggallery
+  Paper effect:
+  - Rotation: -6° to +6°
+  - Box shadows for depth
+  - Hover: scale(1.05)
+end note
+
+@enduml

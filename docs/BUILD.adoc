@@ -1,0 +1,47 @@
+= Building Documentation and Diagrams
+:toc: left
+
+This guide explains how to generate the architecture diagrams and PDF documents for the WebUp project, either with local tooling or using Docker.
+
+== What you can build
+
+- PlantUML diagrams → `docs/images/*.png`
+- AsciiDoc → PDF for:
+  - `index.adoc`, `theming.adoc`, `deployment.adoc`, `quick-reference.adoc`, `learning.adoc`
+
+== Option A: Local tools
+
+Install:
+
+- PlantUML and Graphviz (`dot`)
+- Asciidoctor PDF (`gem install asciidoctor-pdf`)
+
+Then run from the project root:
+
+- `make diagrams` → renders all `docs/diagrams/*.puml` to `docs/images/*.png`
+- `make pdfs` → builds PDFs for all docs (excludes `docs/README.adoc`)
+- `make docs` → both diagrams and PDFs
+
+== Option B: Docker (no local installs)
+
+Requires Docker. From the project root:
+
+- `make docker-diagrams` → renders diagrams using `plantuml/plantuml`
+- `make docker-pdfs` → builds PDFs using `asciidoctor/docker-asciidoctor`
+
+== Cleaning generated files
+
+- `make clean-diagrams` → removes generated `docs/images/*.png`
+- `make clean-pdfs` → removes `docs/*.pdf`
+- `make clean` → both
+
+== Notes
+
+- The docs include `:imagesdir:` declarations where needed. If adding new docs, consider setting `:imagesdir: images` at the top to ensure image paths resolve in both HTML and PDF.
+- If your PlantUML version complains about unsupported elements, stick to basic elements (rectangle, note, cloud) as used here.
+- PDF rendering supports tables of contents and font icons by default; customize flags in the Makefile if needed.
+- To validate locally without deploying, use the Makefile targets:
++ `make validate-html` – POST each HTML file to W3C Nu validator (remote).
++ `make validate-css` – Sends CSS to W3C Jigsaw service.
++ `make validate-all` – Runs both.
+- If the HTML validator rate-limits or shows a challenge page, wait and retry or validate pages individually in a browser.

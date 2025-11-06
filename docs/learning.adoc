@@ -1,0 +1,124 @@
+= Learn and Improve HTML5 & CSS
+v0.1.0, 2025-11-06
+:toc: left
+:toclevels: 2
+:sectnums:
+:icons: font
+:source-highlighter: highlightjs
+
+== Goal
+
+This guide provides a practical, beginner-friendly path to learn HTML5 and CSS, improve accessibility, and follow modern best practices — using trusted references like W3C, MDN Web Docs, and web.dev.
+
+== Core Learning Path (Recommended)
+
+1. HTML5 Foundations
+   - Learn semantic elements: `header`, `nav`, `main`, `article`, `section`, `footer`
+   - Understand headings (H1–H6), lists, links, images, forms
+   - Practice structuring content for meaning (not appearance)
+
+2. CSS Fundamentals
+   - The box model: margin, border, padding, content
+   - Selectors and specificity (avoid over-specific selectors)
+   - Layout with Flexbox and CSS Grid
+   - Responsive design with media queries
+   - Colors, typography, spacing scales
+
+3. Modern Styling Patterns
+   - CSS Variables (custom properties) for design tokens
+   - Utility classes vs. component styles
+   - Organize CSS by sections/modules
+
+4. Accessibility (A11y)
+   - Use semantic HTML first; ARIA to fill gaps
+   - Keyboard navigation and focus styles
+   - Color contrast (WCAG AA), alt text for images
+
+5. Performance & SEO Basics
+   - Optimize images (size/format), cache headers
+   - Meta tags, page titles, sitemaps, robots.txt
+   - Mobile-first considerations
+
+== Practice: Small, Focused Exercises
+
+- Rebuild your homepage layout using only Flexbox
+- Create a two-column layout with CSS Grid and make it responsive
+- Replace hardcoded values with CSS variables in a small component
+- Add keyboard navigation tests (Tab through links and controls)
+- Validate your pages using the W3C Validator and fix errors
+
+== Trusted Learning Resources
+
+=== Official Standards and References
+
+- W3C HTML Specification (Beginner Guides & Tutorials)
+  https://www.w3.org/standards/webdesign/htmlcss
+- W3C Web Accessibility Initiative (WAI)
+  https://www.w3.org/WAI/standards-guidelines/wcag/
+
+=== MDN Web Docs (Highly Recommended)
+
+- MDN Learn Web Development (HTML/CSS/JS track)
+  https://developer.mozilla.org/en-US/docs/Learn
+- HTML Elements Reference
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+- CSS Reference
+  https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+- Flexbox Guide
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+- Grid Guide
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
+- CSS Custom Properties (Variables)
+  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+
+=== web.dev (Google)
+
+- Responsive Design Fundamentals
+  https://web.dev/learn/design/
+- Performance Fundamentals
+  https://web.dev/learn/performance/
+- Accessibility
+  https://web.dev/learn/accessibility/
+
+=== Accessibility (Practical Tools)
+
+- WAVE WebAIM Accessibility Evaluation Tool
+  https://wave.webaim.org/
+- Contrast Checker
+  https://webaim.org/resources/contrastchecker/
+
+== Validate and Test Your Work
+
+- HTML Validator
+  https://validator.w3.org/
+- CSS Validator
+  https://jigsaw.w3.org/css-validator/
+- Lighthouse (in Chrome DevTools) for performance, a11y, SEO checks
+
+== Suggested Project Milestones
+
+- Milestone 1: Semantic Structure
+  - Convert all pages to use proper semantic tags and headings
+- Milestone 2: Responsive Layout
+  - Ensure every page works on mobile, tablet, desktop
+- Milestone 3: Theming with Variables
+  - Move colors/spacing to `:root` and document tokens
+- Milestone 4: Accessibility Pass
+  - Keyboard navigation, alt text, ARIA where needed, color contrast
+- Milestone 5: Performance & SEO
+  - Optimize images, add sitemap, check robots, meta descriptions
+
+== Keep Improving
+
+- Read code by reputable open-source projects (HTML/CSS only sites)
+- Practice recreating components from screenshots
+- Participate in challenges (e.g., Frontend Mentor)
+- Keep a personal style guide of tokens and patterns
+
+== Using This Project as a Learning Sandbox
+
+- Try adding a new page and wire it into the nav
+- Create an alternate theme using the variables in `css/style.css`
+- Replace the gallery with a responsive Grid layout variant
+- Add a print stylesheet and test printing a page
+- Validate and fix any issues reported by validators and Lighthouse

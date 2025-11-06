@@ -6,10 +6,83 @@ v0.1.0, 2025-11-06
 :sectnums:
 :icons: font
 :source-highlighter: highlightjs
+:imagesdir: images
 
 == Introduction
 
 This guide covers deploying the WebUp Industrial Engineering website to various hosting platforms. Since this is a static HTML/CSS website, deployment is straightforward and works with any static hosting service.
+
+image::deployment-workflow.png[Deployment workflow overview,align=center]
+
+== Beginner Quick Start: Shared Hosting (FTP / cPanel / Plesk)
+
+If your hosting provider gives you a control panel (like cPanel or Plesk) or FTP/SFTP access, follow these simple steps. No build tools needed — just upload the files.
+
+=== 1) Prepare your website
+
+* Replace placeholder images in `html/images/` with your own, properly licensed images
+* Fill in your company data in `html/impressum.html`
+* Open `html/sitemap.xml` and replace `https://yourdomain.com/` with your real domain
+* Optional: Update descriptions and titles in each HTML page
+
+=== 2) Locate your web root
+
+On shared hosting, the public web folder is typically named:
+
+* `public_html` (cPanel)
+* `httpdocs` (Plesk)
+* `www` or `htdocs` (some hosters)
+
+This is the folder your domain points to. Files placed here are served by your website.
+
+=== 3) Upload your files
+
+You have two simple options:
+
+. Using File Manager (in your control panel):
+** Open File Manager and navigate to your web root
+** Upload the CONTENTS of your local `html/` folder (don’t upload the `html` folder itself)
+** You should see `index.html`, `about.html`, `css/`, `images/`, etc. directly inside the web root
+
+. Using an FTP client (FileZilla, Cyberduck, WinSCP):
+** Host: provided by your host (e.g., ftp.yourdomain.com)
+** Protocol: SFTP if available, else FTP
+** Username/Password: from your hoster
+** Remote folder: your web root (e.g., `public_html`)
+** Upload the CONTENTS of your local `html/` folder to the web root
+
+=== 4) Test your site
+
+* Visit `https://yourdomain.com`
+* You should see your homepage (`index.html`)
+* Check a few links (About, Contact, Impressum, image pages)
+
+=== 5) Enable HTTPS (SSL)
+
+Most hosters include free HTTPS via Let’s Encrypt:
+
+* In cPanel/Plesk: look for “SSL/TLS” or “Let’s Encrypt” and enable it for your domain
+* After enabling, access the site with `https://` and ensure there are no “mixed content” warnings
+
+=== 6) Submit your sitemap (optional, but recommended)
+
+* Go to Google Search Console and add your domain
+* Submit `https://yourdomain.com/sitemap.xml`
+* Your private pages (about/contact/impressum) are already excluded via meta tags and `robots.txt`
+
+=== 7) Common pitfalls (quick fixes)
+
+* Blank page or 404:
+** Ensure `index.html` is in the web root (not inside an extra `html/` folder)
+* CSS not loading:
+** Check that `css/style.css` exists in the server’s `css/` folder
+** Confirm the `<link rel="stylesheet" href="css/style.css">` path remains relative
+* Images not showing:
+** Confirm files are in `images/` and paths match exactly (case-sensitive on Linux)
+* Wrong domain in sitemap:
+** Edit `html/sitemap.xml` before uploading (or fix on the server and re-upload)
+
+That’s it! You’re live with a classic shared hosting setup.
 
 == Pre-Deployment Checklist
 

@@ -1,0 +1,74 @@
+@startuml seo-architecture
+skinparam monochrome true
+skinparam shadowing false
+
+title SEO & Privacy Architecture
+
+package "Search Engine Crawlers" as crawler {
+  rectangle "Googlebot" as google
+  rectangle "Bingbot" as bing
+}
+
+rectangle "robots.txt" as robots
+rectangle "sitemap.xml" as sitemap
+
+package "Public Pages (Indexed)" as public {
+  rectangle "index.html" as idx
+  rectangle "image1-5.html" as images
+}
+
+package "Private Pages (Not Indexed)" as private {
+  rectangle "about.html" as about
+  rectangle "contact.html" as contact
+  rectangle "impressum.html" as impressum
+}
+
+rectangle "Search Results (SERP)" as serp
+rectangle "humans.txt" as humans
+
+' Workflow
+google --> robots : 1) fetch
+google --> sitemap : 2) read
+bing --> robots
+bing --> sitemap
+
+robots -down-> public : allow
+robots -down-> private : disallow
+sitemap --> public : list URLs
+
+google --> public : index
+bing --> public : index
+google -[#red]-> private : skip (noindex)
+bing -[#red]-> private : skip (noindex)
+
+public --> serp : appear
+private -[#red]--> serp : excluded
+
+note right of robots
+  Disallow:
+  - /about.html
+  - /contact.html
+  - /impressum.html
+end note
+
+note right of sitemap
+  Includes:
+  - index.html (priority 1.0)
+  - image1-5.html (priority 0.8)
+  Excludes private pages
+end note
+
+note right of idx
+  Target keywords:
+  metal, steel,
+  industrial, machinery,
+  engineering, fabrication, cnc
+end note
+
+note bottom of private
+  Pages include meta robots:
+  noindex, nofollow,
+  noarchive, nosnippet
+end note
+
+@enduml

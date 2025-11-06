@@ -1,0 +1,111 @@
+@startuml project-structure
+skinparam backgroundColor #FEFEFE
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam shadowing false
+
+title WebUp Project Structure
+
+package "Root Directory" {
+    file ".gitignore" as gitignore
+    file "LICENSE" as license
+    file "README.md" as readme
+    file "CHANGELOG.md" as changelog
+    file "CONTRIBUTING.md" as contributing
+}
+
+package "docs/" as docs {
+    file "index.adoc" as doc_index
+    file "theming.adoc" as doc_theming
+    file "deployment.adoc" as doc_deployment
+    file "quick-reference.adoc" as doc_quick
+    file "index.pdf" as pdf_index
+    file "theming.pdf" as pdf_theming
+    file "deployment.pdf" as pdf_deployment
+    file "quick-reference.pdf" as pdf_quick
+}
+
+package "html/" as html {
+    
+    package "Pages" {
+        file "index.html" as index <<Homepage>>
+        file "about.html" as about <<noindex>>
+        file "contact.html" as contact <<noindex>>
+        file "impressum.html" as impressum <<noindex>>
+        file "image1.html" as img1
+        file "image2.html" as img2
+        file "image3.html" as img3
+        file "image4.html" as img4
+        file "image5.html" as img5
+    }
+    
+    package "css/" as css {
+        file "style.css" as style <<CSS Variables>>
+        file "themes.md" as themes
+    }
+    
+    package "images/" as images {
+        file "gear.ico" as favicon
+        file "gear.png" as logo
+        file "metal1.jpg" as metal1
+        file "metal2.jpg" as metal2
+        file "metal3.jpg" as metal3
+        file "metal4.jpg" as metal4
+        file "metal5.jpg" as metal5
+    }
+    
+    file "robots.txt" as robots
+    file "sitemap.xml" as sitemap
+    file "humans.txt" as humans
+}
+
+' Relationships
+index --> style : uses
+index --> logo : displays
+index --> metal1 : gallery
+index --> metal2 : gallery
+index --> metal3 : gallery
+index --> metal4 : gallery
+index --> metal5 : gallery
+index --> about : links
+index --> contact : links
+index --> impressum : links
+index --> img1 : links
+index --> img2 : links
+index --> img3 : links
+index --> img4 : links
+index --> img5 : links
+
+img1 --> metal1 : watermark
+img2 --> metal2 : watermark
+img3 --> metal3 : watermark
+img4 --> metal4 : watermark
+img5 --> metal5 : watermark
+
+robots --> about : disallows
+robots --> contact : disallows
+robots --> impressum : disallows
+
+sitemap --> index : indexes
+sitemap --> img1 : indexes
+sitemap --> img2 : indexes
+sitemap --> img3 : indexes
+sitemap --> img4 : indexes
+sitemap --> img5 : indexes
+
+note right of docs
+  Documentation in both
+  AsciiDoc and PDF formats
+end note
+
+note right of about
+  Excluded from
+  search engines
+end note
+
+note right of style
+  Uses CSS variables
+  for easy theming
+end note
+
+@enduml

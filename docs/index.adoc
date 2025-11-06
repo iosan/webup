@@ -51,7 +51,6 @@ WebUp is a professional HTML5/CSS3 website designed for industrial engineering c
 * Web browser (Chrome, Firefox, Safari, Edge)
 * Text editor (VS Code recommended)
 * Basic knowledge of HTML/CSS
-* Optional: Local web server for testing
 
 === Installation
 
@@ -59,7 +58,6 @@ WebUp is a professional HTML5/CSS3 website designed for industrial engineering c
 +
 [source,bash]
 ----
-git clone https://github.com/iosan/webup.git
 cd webup
 ----
 
@@ -70,8 +68,9 @@ cd webup
 git checkout v0.1.0
 ----
 
-. Open `html/index.html` in your browser or start a local server:
 +
+image::project-structure.png[Project structure overview,align=center]
+
 [source,bash]
 ----
 cd html
@@ -86,8 +85,13 @@ Open any HTML file in the `html/` directory directly in your browser. No build p
 
 == Project Structure
 
+image::html-structure.png[Semantic HTML layout,align=center]
+
+=== Navigation Flow
+
+image::navigation-flow.png[Page-to-page navigation flow,align=center]
+
 [source,text]
-----
 webup/
 ├── .git/                      # Git repository
 ├── .gitignore                 # Git ignore patterns
@@ -124,47 +128,55 @@ webup/
         └── gear.ico          # Favicon
 ----
 
-== Architecture
+== Architecture Overview
 
-=== HTML Structure
+=== Project Structure Diagram
+image::project-structure.png[Repository layout,align=center]
+The diagram shows top-level files (licensing, meta, documentation) and the split between `docs/` and `html/` application assets.
 
-All HTML files follow a consistent structure:
+=== Semantic HTML Skeleton
+image::html-structure.png[Semantic HTML layout,align=center]
+Every page shares the same accessible structure: `<header>` (logo + nav), `<main>` (content/articles), `<footer>` (legal + navigation anchor).
 
-[source,html]
-----
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="iosan">
-    <meta name="description" content="...">
-    <meta name="keywords" content="metal, steel, industrial, machinery, engineering, fabrication, cnc">
-    <link rel="icon" type="image/x-icon" href="images/gear.ico">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Page Title</title>
-</head>
-<body>
-    <header>...</header>
-    <main class="content">...</main>
-    <footer>...</footer>
-</body>
-</html>
-----
+=== CSS Variable & Layer Architecture
+image::css-architecture.png[CSS tokens and style sections,align=center]
+Central design tokens in `:root` flow into each style section enabling rapid theming and consistent spacing, color, and effect reuse.
 
-=== CSS Architecture
+=== Navigation Flow
+image::navigation-flow.png[User navigation paths,align=center]
+Public gallery drives traffic into project detail pages; private (noindex) informational pages and impressum remain excluded from search but reachable via global nav/footer.
 
-The stylesheet is organized into logical sections with CSS variables for easy theming:
+=== SEO & Privacy Architecture
+image::seo-architecture.png[Indexing and exclusion,align=center]
+`robots.txt` and meta robots directives gate crawlers; `sitemap.xml` lists only public pages ensuring controlled search surface.
 
-. *CSS Variables* - Theme configuration
-. *Global Styles* - Reset and body styles
-. *Header Styles* - Top navigation area
-. *Logo Styles* - Brand logo positioning
-. *Navigation Styles* - Menu links
-. *Content Area Styles* - Main content styling
-. *Watermark Background Styles* - Background overlays
-. *Image Gallery Styles* - Gallery layout and effects
-. *Footer Styles* - Bottom section
+=== Theme System Overview
+image::theme-system.png[Theme extension points,align=center]
+Core tokens allow swapping palettes (industrial sepia → alternative themes) without structural CSS changes.
+
+=== Deployment Workflow
+image::deployment-workflow.png[Static deployment stages,align=center]
+Local authoring → version control → optional CI → static host (GitHub Pages/Netlify/Vercel) → CDN delivery.
+
+[TIP]
+====
+Looking for all diagrams on one page? See link:diagrams.adoc[Architecture Diagrams Gallery].
+====
+
+=== Section Listing (CSS Layers)
+The stylesheet is segmented for maintainability:
+
+* CSS Variables (design tokens)
+* Global Styles (reset + body)
+* Header Styles
+* Logo Styles
+* Navigation Styles
+* Content Area Styles
+* Watermark Background Styles
+* Image Gallery Styles
+* Footer Styles
+
+Each segment consumes tokens from `:root` for consistent theming.
 
 == Features in Detail
 
@@ -199,6 +211,8 @@ Search engine optimization includes:
 * `sitemap.xml` for search engines
 * Proper page titles
 * Author attribution
+
+image::seo-architecture.png[SEO and privacy architecture,align=center]
 
 === Privacy Compliance
 

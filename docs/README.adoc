@@ -13,6 +13,8 @@ Welcome to the WebUp Industrial Engineering documentation.
 * link:theming.adoc[CSS Theming Guide] - Theme customization guide
 * link:deployment.adoc[Deployment Guide] - Deployment instructions
 * link:quick-reference.adoc[Quick Reference Card] - Fast lookup guide
+* link:learning.adoc[Learning Guide] - Improve HTML5 & CSS skills
+* link:diagrams.adoc[Architecture Diagrams Gallery] - All diagrams in one place
 
 *PDF Format:*
 
@@ -20,6 +22,39 @@ Welcome to the WebUp Industrial Engineering documentation.
 * link:theming.pdf[CSS Theming Guide (PDF)] - Theme customization guide
 * link:deployment.pdf[Deployment Guide (PDF)] - Deployment instructions
 * link:quick-reference.pdf[Quick Reference Card (PDF)] - Fast lookup guide
+* link:learning.adoc[Learning Guide (AsciiDoc)] - (Convert to PDF if needed)
+* link:diagrams.pdf[Architecture Diagrams Gallery (PDF)] - All diagrams in one place
+
+=== Architecture Diagrams
+
+Diagrams are generated with PlantUML. Browse the rendered images here:
+
+* link:images/project-structure.png[Project Structure]
+* link:images/html-structure.png[HTML Skeleton]
+* link:images/css-architecture.png[CSS Architecture]
+* link:images/navigation-flow.png[Navigation Flow]
+* link:images/seo-architecture.png[SEO & Privacy]
+* link:images/theme-system.png[Theme System]
+* link:images/deployment-workflow.png[Deployment Workflow]
+
+TIP: The diagrams are also embedded contextually within `index.adoc`, `theming.adoc`, and `deployment.adoc` for in-flow explanation.
+
+See also: link:diagrams.adoc[Architecture Diagrams Gallery] for a consolidated view and printable PDF.
+
+=== Build Automation
+
+Generate diagrams and PDFs with the Makefile from the project root:
+
+- `make diagrams` → Render PlantUML to `docs/images/*.png`
+- `make pdfs` → Build PDFs for all docs (including `learning.adoc`)
+- `make docs` → Both diagrams and PDFs
+
+No local installs? Use Docker alternatives:
+
+- `make docker-diagrams`
+- `make docker-pdfs`
+
+See link:BUILD.adoc[BUILD.adoc] for full instructions and prerequisites.
 
 === Quick Links
 

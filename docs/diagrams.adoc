@@ -1,0 +1,77 @@
+= Architecture Diagrams Gallery
+iosan
+v0.1.0, 2025-11-06
+:toc: left
+:toclevels: 2
+:sectnums:
+:icons: font
+:imagesdir: images
+
+This gallery brings all architecture diagrams into one place. Each diagram is maintained as PlantUML (`docs/diagrams/*.puml`) and rendered to PNG (`docs/images/*.png`). See link:BUILD.adoc[BUILD.adoc] for how to regenerate them.
+== Thumbnail index
+
+Click a thumbnail to jump to the full-size diagram below.
+
+[cols="^,^,^,^",frame=none,grid=none]
+|===
+| image:project-structure.png[width=140,link=#project-structure]
+| image:html-structure.png[width=140,link=#html-structure]
+| image:navigation-flow.png[width=140,link=#navigation-flow]
+| image:css-architecture.png[width=140,link=#css-architecture]
+
+| image:theme-system.png[width=140,link=#theme-system]
+| image:seo-architecture.png[width=140,link=#seo-architecture]
+| image:deployment-workflow.png[width=140,link=#deployment-workflow]
+| 
+|===
+
+
+== Repository Layout
+[[project-structure]]
+.Project Structure
+image::project-structure.png[Project structure overview,align=center]
+Explains top-level files and the split between documentation (`docs/`) and website assets (`html/`).
+
+== HTML and Navigation
+[[html-structure]]
+.Semantic HTML Skeleton
+image::html-structure.png[Semantic HTML layout,align=center]
+Shared, accessible page structure: header → main → footer.
+[[navigation-flow]]
+.Navigation Flow
+image::navigation-flow.png[Page-to-page navigation flow,align=center]
+Shows how users move from the homepage gallery to detail pages; private pages remain accessible but excluded from search.
+
+== CSS and Theming
+[[css-architecture]]
+.CSS Architecture
+image::css-architecture.png[CSS tokens and style sections,align=center]
+Design tokens in :root feed each style layer for consistency and easy theme switching.
+[[theme-system]]
+.Theme System
+image::theme-system.png[Theme extension points,align=center]
+Demonstrates how alternative color palettes can be applied via custom properties without changing structure.
+
+== SEO, Privacy, and Deployment
+[[seo-architecture]]
+.SEO & Privacy Architecture
+image::seo-architecture.png[Indexing and exclusion,align=center]
+Combines meta robots directives, robots.txt, and sitemap.xml to control search engine visibility.
+[[deployment-workflow]]
+.Deployment Workflow
+image::deployment-workflow.png[Static deployment stages,align=center]
+From local authoring to CDN delivery across common static hosting platforms.
+
+== Sources and Regeneration
+
+All diagrams are maintained as PlantUML:
+
+* Sources: `docs/diagrams/*.puml`
+* Rendered images: `docs/images/*.png`
+
+Regenerate with either local tools or Docker. From the project root:
+
+* Local: `make diagrams`
+* Docker: `make docker-diagrams`
+
+To include diagrams in PDFs or HTML versions of the docs, ensure `:imagesdir: images` is set (as in this file).

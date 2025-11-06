@@ -6,10 +6,13 @@ v0.1.0, 2025-11-06
 :sectnums:
 :icons: font
 :source-highlighter: highlightjs
+:imagesdir: images
 
 == Introduction
 
 This guide explains how to use CSS variables for theming in the WebUp Industrial Engineering website. The website uses a modern CSS variable system that allows you to change colors, spacing, and other design elements from a central location.
+
+image::theme-system.png[Theme system overview,align=center]
 
 == CSS Variables Overview
 

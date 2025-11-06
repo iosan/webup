@@ -1,0 +1,34 @@
+@startuml navigation-flow
+skinparam monochrome true
+skinparam shadowing false
+
+title WebUp Navigation Flow (Simplified)
+
+rectangle "Homepage\nindex.html" as home
+rectangle "About\nabout.html" as about
+rectangle "Contact\ncontact.html" as contact
+rectangle "Impressum\nimpressum.html" as impressum
+rectangle "Project Pages\nimage1-5.html" as projects
+
+home --> projects : click gallery image
+home --> about : nav link
+home --> contact : nav link
+home --> impressum : footer link
+
+about --> home : nav "Home"
+contact --> home : nav "Home"
+projects --> home : logo / nav
+impressum --> home : nav "Home"
+
+note right of about
+  Private pages:
+  - meta robots: noindex
+  - excluded in sitemap
+end note
+
+note bottom of projects
+  5 detail pages with
+  watermark backgrounds
+end note
+
+@enduml

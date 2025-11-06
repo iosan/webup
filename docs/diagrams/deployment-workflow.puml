@@ -1,0 +1,80 @@
+@startuml deployment-workflow
+skinparam backgroundColor #FEFEFE
+skinparam defaultFontName Arial
+skinparam shadowing false
+
+title Deployment Workflow
+
+|Developer|
+start
+:Edit HTML/CSS/Images;
+:Test locally\n(http-server);
+note right
+    python -m http.server 8000
+    or
+    npx http-server -p 8000
+end note
+
+|Quality Assurance|
+:Run validation checks;
+partition "Validation" {
+    :Validate HTML\n(validator.w3.org);
+    :Validate CSS\n(jigsaw.w3.org);
+    :Check Accessibility\n(wave.webaim.org);
+    :Test Browsers;
+    :Test Mobile;
+}
+
+|Developer|
+:Replace placeholder images?;
+note right
+    CRITICAL: Must replace
+    metal1-5.jpg with
+    licensed images
+end note
+
+:Update sitemap.xml domain?;
+:Update impressum.html?;
+
+|Version Control|
+:Commit changes to Git;
+:Push to repository;
+
+|Deployment|
+split
+    :GitHub Pages?;
+    partition "GitHub Pages" {
+        :git subtree push\n--prefix html\norigin gh-pages;
+        :Configure custom domain;
+    }
+split again
+    :Netlify?;
+    partition "Netlify" {
+        :Connect Git repository;
+        :Set publish dir: html;
+        :Auto-deploy on push;
+    }
+split again
+    :Vercel?;
+    partition "Vercel" {
+        :Import project;
+        :Set root dir: html;
+        :Auto-deploy;
+    }
+split again
+    :Traditional Hosting?;
+    partition "FTP/SSH" {
+        :Upload html/ contents;
+        :Configure server;
+        :Setup SSL certificate;
+    }
+end split
+
+|Production|
+:Website live!;
+:Monitor uptime;
+:Check analytics;
+:Submit to Search Console;
+stop
+
+@enduml

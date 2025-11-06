@@ -1,0 +1,128 @@
+@startuml html-structure
+skinparam backgroundColor #FEFEFE
+skinparam defaultFontName Arial
+skinparam shadowing false
+
+title HTML5 Semantic Structure
+
+package "HTML Page Structure" {
+    
+    component "<!DOCTYPE html>" as doctype
+    
+    component "<html lang='en'>" as html {
+        
+        component "<head>" as head {
+            component "<meta>" as meta {
+                [charset=UTF-8]
+                [viewport]
+                [author]
+                [description]
+                [keywords]
+                [robots (noindex)]
+            }
+            
+            component "<link>" as link {
+                [favicon (gear.ico)]
+                [stylesheet (style.css)]
+            }
+            
+            component "<title>" as title
+        }
+        
+        component "<body>" as body {
+            
+            component "<header>" as header {
+                component "<div class='logo'>" as logo {
+                    [<a> with <img>]
+                }
+                
+                component "<h1>" as h1
+                
+                component "<nav>" as nav {
+                    component "<ul>" as ul {
+                        [<li><a> links]
+                    }
+                }
+            }
+            
+            component "<main class='content'>" as main {
+                component "<h2>" as h2
+                
+                component "<section class='image-gallery'>" as gallery {
+                    component "<article class='image-container'>" as article1 {
+                        [<a><img> metal1.jpg]
+                    }
+                    component "<article>" as article2
+                    component "<article>" as article3
+                    component "<article>" as article4
+                    component "<article>" as article5
+                }
+            }
+            
+            component "<footer>" as footer {
+                [Copyright text]
+                [<a> to impressum]
+            }
+        }
+    }
+}
+
+doctype --> html
+
+html --> head
+html --> body
+
+head --> meta
+head --> link
+head --> title
+
+body --> header
+body --> main
+body --> footer
+
+header --> logo
+header --> h1
+header --> nav
+
+nav --> ul
+
+main --> h2
+main --> gallery
+
+gallery --> article1
+gallery --> article2
+gallery --> article3
+gallery --> article4
+gallery --> article5
+
+note right of meta
+    **SEO & Accessibility**
+    - Author: iosan
+    - Keywords: metal, steel, 
+      industrial, machinery,
+      engineering, fabrication, cnc
+    - Robots: noindex for private pages
+end note
+
+note right of header
+    **ARIA Labels**
+    - <nav aria-label="Main Navigation">
+    - <section aria-label="Project Gallery">
+    - aria-current="page"
+end note
+
+note right of main
+    **Semantic HTML5**
+    - <header>, <nav>, <main>
+    - <article>, <section>, <footer>
+    - Proper heading hierarchy
+end note
+
+note bottom of footer
+    **Fixed Position**
+    - position: fixed
+    - bottom: 0
+    - width: 100%
+end note
+
+@enduml

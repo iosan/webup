@@ -1,0 +1,102 @@
+@startuml theme-system
+skinparam backgroundColor #FEFEFE
+skinparam defaultFontName Arial
+skinparam shadowing false
+
+title CSS Variable Theme System
+
+actor "Developer" as dev
+
+rectangle "Theme Configuration\n(:root)" as root {
+    rectangle "Color Variables" as colors {
+        card "--color-primary" as primary #3d2f21
+        card "--color-background" as bg #f4f4f4
+        card "--color-text-dark" as text #333333
+    }
+    
+    rectangle "Spacing Variables" as spacing {
+        card "--spacing-sm: 20px" as sp_sm
+        card "--spacing-md: 40px" as sp_md
+        card "--spacing-lg: 100px" as sp_lg
+    }
+    
+    rectangle "Component Variables" as components {
+        card "--logo-size: 80px" as logo
+        card "--image-size: 250px" as img
+        card "--gallery-gap: 40px" as gap
+    }
+}
+
+rectangle "Pre-made Themes" as themes {
+    card "Blue Industrial\n#1a3a52" as blue #1a3a52
+    card "Modern Gray\n#2c3e50" as gray #2c3e50
+    card "Deep Green\n#1e3a1a" as green #1e3a1a
+    card "Warm Orange\n#d35400" as orange #d35400
+    card "Navy\n#001f3f" as navy #001f3f
+}
+
+rectangle "CSS Styles" as styles {
+    rectangle "header" as header
+    rectangle "footer" as footer
+    rectangle ".content" as content
+    rectangle ".image-gallery" as gallery
+    rectangle "nav" as nav
+}
+
+rectangle "HTML Pages" as pages {
+    file "index.html" as index
+    file "about.html" as about
+    file "image1.html" as img1
+}
+
+' Workflow
+dev --> root : "1. Modify variables"
+dev --> themes : "or choose theme"
+
+themes --> root : "Apply theme"
+
+root --> styles : "2. Variables applied"
+
+colors --> header : background-color
+colors --> footer : background-color
+colors --> content : background-color
+colors --> gallery : colors
+
+spacing --> header : padding
+spacing --> content : padding
+spacing --> gallery : gap
+
+components --> gallery : image size
+components --> header : logo size
+
+styles --> pages : "3. Styles rendered"
+
+note right of root
+    **Single Source of Truth**
+    Change once, applies everywhere
+    
+    Example:
+    --color-primary: #1a3a52;
+    → Updates header & footer
+end note
+
+note bottom of themes
+    **Easy Theme Switching**
+    
+    Method 1: Replace in :root
+    Method 2: Separate theme file
+    Method 3: @media dark mode
+end note
+
+note left of styles
+    All styles use var()
+    
+    Example:
+    background-color: 
+      var(--color-primary);
+    
+    padding: 
+      var(--spacing-sm);
+end note
+
+@enduml

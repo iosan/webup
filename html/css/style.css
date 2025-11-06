@@ -251,3 +251,25 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Validator badges in footer */
+.validator-badges {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.validator-badges img {
+    height: 22px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,0.15));
+}
+
+.validator-badges a {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+}
