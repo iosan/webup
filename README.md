@@ -27,7 +27,8 @@
 - ✅ **W3C Validated** - HTML5 and CSS3 pass official W3C validation with badge links in footer
 - 🏗️ **Architecture Diagrams** - 7 PlantUML diagrams documenting structure, flow, and deployment
 - 🔧 **Build Automation** - Makefile targets for diagrams, PDFs, and validation
-- 📚 **Learning Resources** - Curated HTML5/CSS learning path with milestones and exercises
+- � **GitHub Actions** - Automated deployment to GitHub Pages and CI for documentation
+- �📚 **Learning Resources** - Curated HTML5/CSS learning path with milestones and exercises
 - 🔗 **Multi-Page Navigation** - Home, About, Contact, Impressum, and individual project detail pages
 - ⚙️ **Custom Branding** - Compact 32px logo in navigation bar with favicon support
 - 🎭 **Watermarked Backgrounds** - Beautiful project images as backgrounds on detail pages
@@ -54,6 +55,11 @@ webup/
 ├── 📄 CHANGELOG.md            # Version history
 ├── 📄 CONTRIBUTING.md         # Contribution guidelines
 ├── 📄 Makefile                # Build automation (diagrams, PDFs, validation)
+├── 📁 .github/                # GitHub Actions workflows
+│   ├── 📄 README.md           # Workflows documentation
+│   └── 📁 workflows/
+│       ├── 📄 deploy.yml      # GitHub Pages deployment
+│       └── 📄 build.yml       # Documentation build & validation
 ├── 📁 docs/                   # Documentation (AsciiDoc)
 │   ├── 📄 README.adoc         # Documentation index
 │   ├── 📄 index.adoc          # Main documentation
@@ -269,6 +275,48 @@ Or validate locally:
 ```bash
 make validate-all
 ```
+
+---
+
+## 🚀 GitHub Actions & Deployment
+
+### Automated Workflows
+
+The repository includes two GitHub Actions workflows in `.github/workflows/`:
+
+#### 1. **deploy.yml** - GitHub Pages Deployment
+Automatically deploys the `html/` directory to GitHub Pages when you push to `master` or `main`.
+
+**Setup:**
+1. Go to repository **Settings → Actions → General**
+2. Under "Workflow permissions", select **"Read and write permissions"**
+3. Go to **Settings → Pages**
+4. Set Source to **"Deploy from a branch"**
+5. Select branch: **`gh-pages`** / folder: **`/ (root)`**
+6. Push to `master`/`main` and your site deploys automatically!
+
+Your site will be available at: `https://<username>.github.io/<repository>/`
+
+#### 2. **build.yml** - Documentation Build (Optional)
+Builds diagrams and PDFs on every push or pull request. Artifacts are available for download.
+
+**What it does:**
+- Installs PlantUML, Graphviz, and AsciiDoc tools
+- Runs `make diagrams` to generate PNG diagrams
+- Runs `make pdfs` to build documentation PDFs
+- Uploads artifacts (PDFs and PNGs) for download
+
+### Manual Deployment
+
+For traditional hosting (FTP, shared hosting, VPS):
+
+```bash
+# Just upload the html/ directory contents
+cd html
+# Upload all files to your web server's public_html or www directory
+```
+
+See `docs/deployment.adoc` for detailed deployment guides including Netlify, Vercel, and custom domains.
 
 ---
 
