@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Pages -->
+    <url>
+        <loc>https://yourdomain.com/index.html</loc>
+        <lastmod>2025-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Project Detail Pages -->
+    <url>
+        <loc>https://yourdomain.com/image1.html</loc>
+        <lastmod>2025-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://yourdomain.com/image2.html</loc>
+        <lastmod>2025-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://yourdomain.com/image3.html</loc>
+        <lastmod>2025-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://yourdomain.com/image4.html</loc>
+        <lastmod>2025-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://yourdomain.com/image5.html</loc>
+        <lastmod>2025-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Note: about.html, contact.html, and impressum.html are excluded as per robots.txt -->
+</urlset>
