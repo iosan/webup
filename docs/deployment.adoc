@@ -1,6 +1,6 @@
 = Deployment Guide
 iosan
-v0.5.0, 2025-11-06
+v0.5.1, 2025-11-13
 :toc: left
 :toclevels: 2
 :sectnums:
@@ -693,4 +693,4 @@ git push origin gh-pages
 ---
 
 *Last Updated:* November 6, 2025 +
-*Version:* 0.5.0
+*Version:* 0.5.1

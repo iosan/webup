@@ -1,6 +1,6 @@
 = Architecture Diagrams Gallery
 iosan
-v0.5.0, 2025-11-06
+v0.5.1, 2025-11-13
 :toc: left
 :toclevels: 2
 :sectnums:

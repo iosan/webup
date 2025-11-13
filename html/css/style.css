@@ -288,6 +288,7 @@ header h1 {
     align-items: center;
     gap: var(--gallery-gap);
     margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     flex-wrap: wrap;
 }
 
