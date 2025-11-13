@@ -9,7 +9,7 @@ toc::[]
 [cols="1,2"]
 |===
 |Project |WebUp Industrial Engineering
-|Version |0.5.0
+|Version |0.5.1
 |Date |November 6, 2025
 |Author |iosan
 |License |MIT License
@@ -417,7 +417,7 @@ Build command: (none)
 
 * Repository: https://github.com/iosan/webup
 * Issues: https://github.com/iosan/webup/issues
-* Branch: v0.5.0
+* Branch: v0.5.1
 * License: MIT
 
 == Image Licensing Warning
@@ -437,6 +437,6 @@ Document all image sources and licenses!
 
 ---
 
-*WebUp Industrial Engineering v0.5.0* +
+*WebUp Industrial Engineering v0.5.1* +
 *Copyright © 2025 iosan* +
 *Last Updated: November 6, 2025*

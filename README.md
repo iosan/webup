@@ -4,7 +4,7 @@
 
 > **Note:** The metal/industrial engineering theme is used as a random example context. This template is versatile and can be easily adapted for any purpose — portfolios, small businesses, personal projects, non-profits, or any other use case by simply changing the content, images, and branding.
 
-![Version](https://img.shields.io/badge/version-0.5.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.5.1-blue.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![SEO Optimized](https://img.shields.io/badge/SEO-Optimized-green.svg)
@@ -491,7 +491,12 @@ All colors, spacing, and sizes use CSS variables for easy customization!
 
 ## � Version History
 
-### v0.5.0 (Current - November 6, 2025)
+### v0.5.1 (Current - November 13, 2025)
+- Added GitHub Actions workflows for automated deployment
+- Fixed build and deployment issues
+- Equal gallery spacing (top and bottom margins)
+
+### v0.5.0 (November 6, 2025)
 
 **Major Release - Responsive Design & Navigation Improvements**
 - ✨ Initial release

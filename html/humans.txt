@@ -7,8 +7,8 @@ Location: [Your Location]
 Thanks to the open-source community for inspiration and tools.
 
 /* SITE */
-Last update: 2025/11/06
-Version: 0.5.0
+Last update: 2025/11/13
+Version: 0.5.1
 Standards: HTML5, CSS3, Accessibility (WCAG)
 Components: Semantic HTML, Responsive CSS, SEO Optimization, Fixed Navigation, Dropdown Menu
 Software: VS Code, Git, GIMP, PlantUML, AsciiDoctor

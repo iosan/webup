@@ -1,6 +1,6 @@
 = WebUp Industrial Engineering - Documentation
 iosan <https://github.com/iosan/webup>
-v0.5.0, 2025-11-06
+v0.5.1, 2025-11-13
 :toc: left
 :toclevels: 3
 :sectnums:
@@ -43,7 +43,7 @@ WebUp is a professional HTML5/CSS3 website designed for industrial engineering c
 |3 breakpoints: Desktop (>768px), Tablet (≤768px), Mobile (≤480px)
 
 |Git
-|Version control on branch v0.5.0
+|Version control on branch v0.5.1
 
 |PlantUML
 |Architecture diagram generation
@@ -74,11 +74,11 @@ For detailed responsive layout information with visual examples, see link:respon
 cd webup
 ----
 
-. Switch to the v0.5.0 branch:
+. Switch to the v0.5.1 branch:
 +
 [source,bash]
 ----
-git checkout v0.5.0
+git checkout v0.5.1
 ----
 
 +
@@ -659,7 +659,7 @@ The placeholder images (metal1-5.jpg, gear.png, gear.ico) are NOT covered by the
 
 * GitHub Issues: https://github.com/iosan/webup/issues
 * Repository: https://github.com/iosan/webup
-* Branch: v0.5.0
+* Branch: v0.5.1
 
 == Appendix
 
@@ -726,5 +726,5 @@ The website targets these SEO keywords:
 ---
 
 *Last Updated:* November 6, 2025 +
-*Version:* 0.5.0 +
+*Version:* 0.5.1 +
 *Author:* iosan

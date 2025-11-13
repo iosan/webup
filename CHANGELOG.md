@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2025-11-13
+
+### Added
+- GitHub Actions workflows for automated deployment and CI
+- `.github/workflows/deploy.yml` - Automated GitHub Pages deployment
+- `.github/workflows/build.yml` - Documentation build and validation
+- `.github/README.md` - Workflows documentation
+- GitHub Actions & Deployment section in README.md
+
+### Fixed
+- Removed incorrect `makefile.yml` workflow causing `./configure` error
+- Fixed Ruby gem permissions issue with `--user-install` flag
+- Image gallery spacing - added equal bottom margin to match top margin
+
+### Changed
+- Simplified GitHub Pages deployment workflow using peaceiris/actions-gh-pages
+- Updated deployment.adoc with new workflow instructions
+- Updated all documentation to version 0.5.1
+
 ## [0.5.0] - 2025-11-06
 
 ### Added
@@ -87,5 +106,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All HTML pages include proper meta tags for SEO and accessibility
 - Three pages (about.html, contact.html, impressum.html) excluded from search engines
 
+[0.5.1]: https://github.com/iosan/webup/releases/tag/v0.5.1
 [0.5.0]: https://github.com/iosan/webup/releases/tag/v0.5.0
 [0.1.0]: https://github.com/iosan/webup/releases/tag/v0.1.0
